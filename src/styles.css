@@ -1,0 +1,388 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * RAKSHIT ✱ — "friendly neo-brutalist toy" design system.
+ * Warm paper backgrounds, candy accents, 2px ink borders, hard offset shadows.
+ */
+
+:root {
+  --radius: 1.25rem;
+
+  /* Brand palette (warm, candy-bright) */
+  --cream: oklch(0.973 0.021 79.5);
+  --paper: oklch(1 0 0);
+  --ink: oklch(0.194 0.008 67.5);
+  --coral: oklch(0.674 0.208 33.5);
+  --sunny: oklch(0.85 0.166 85.5);
+  --mint: oklch(0.784 0.153 168);
+  --sky: oklch(0.57 0.213 265.5);
+  --grape: oklch(0.627 0.212 293.5);
+  --sand: oklch(0.918 0.024 74);
+
+  /* Contact-page accents */
+  --amber: var(--sunny);
+  --teal: var(--mint);
+  --ink-line: color-mix(in oklab, var(--ink) 22%, transparent);
+  --ink-soft: color-mix(in oklab, var(--sand) 88%, var(--paper));
+
+  /* Semantic shadcn tokens mapped onto the toy palette */
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--coral);
+  --primary-foreground: var(--cream);
+  --secondary: var(--sunny);
+  --secondary-foreground: var(--ink);
+  --muted: var(--sand);
+  --muted-foreground: oklch(0.48 0.02 67.5);
+  --accent: var(--mint);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.58 0.23 27.5);
+  --destructive-foreground: var(--cream);
+  --border: var(--ink);
+  --input: var(--ink);
+  --ring: var(--coral);
+  --chart-1: var(--coral);
+  --chart-2: var(--sunny);
+  --chart-3: var(--mint);
+  --chart-4: var(--sky);
+  --chart-5: var(--grape);
+  --sidebar: var(--cream);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--coral);
+  --sidebar-primary-foreground: var(--cream);
+  --sidebar-accent: var(--sunny);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--ink);
+  --sidebar-ring: var(--coral);
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 12px);
+  --radius-md: calc(var(--radius) - 8px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-cream: var(--cream);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-coral: var(--coral);
+  --color-sunny: var(--sunny);
+  --color-mint: var(--mint);
+  --color-sky: var(--sky);
+  --color-grape: var(--grape);
+  --color-sand: var(--sand);
+  --color-amber: var(--amber);
+  --color-teal: var(--teal);
+  --color-ink-line: var(--ink-line);
+  --color-ink-soft: var(--ink-soft);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --font-display: "Poppins", "Clash Display", ui-rounded, system-ui, sans-serif;
+  --font-sans: "Inter", "General Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  * {
+    border-color: var(--ink);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  html {
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--coral);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--sunny);
+    color: var(--ink);
+  }
+}
+
+/* ---- Toy utilities ---- */
+
+@utility hard {
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+@utility hard-sm {
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+@utility hard-lg {
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+@utility ink-border {
+  border: 2px solid var(--ink);
+}
+
+@utility toy-card {
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  background: var(--paper);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+@utility label-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  line-height: 1.6;
+}
+
+@utility display-xl {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.9;
+  font-size: clamp(2.75rem, 10vw, 8rem);
+}
+
+@utility prose-measure {
+  max-width: 62ch;
+}
+
+@utility num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Pulsing availability dot */
+.pulse-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--mint);
+  border: 2px solid var(--ink);
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(35, 213, 160, 0.55);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 7px rgba(35, 213, 160, 0);
+  }
+}
+
+/* Marker-swipe highlight block */
+.highlight-sunny {
+  display: inline-block;
+  background: var(--sunny);
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  padding: 0 0.12em;
+  transform: rotate(-1.5deg);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+/* Marquee */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee-scroll 26s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Wiggle on hover for doodle icons */
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-8deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+}
+
+/* Hand-drawn underline draw-in */
+.draw-in {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 320;
+  animation: draw-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.7s forwards;
+}
+
+@keyframes draw-in {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Paper grain overlay */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes float-doodle {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(6deg);
+  }
+}
+
+.doodle {
+  animation: float-doodle 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .doodle {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Custom cursor hides the native one on fine pointers */
+@media (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor * {
+    cursor: none !important;
+  }
+  body.has-custom-cursor input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
+  body.has-custom-cursor textarea {
+    cursor: text !important;
+  }
+}
+
+@keyframes box-wobble {
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  20% { transform: translate(-6px, 2px) rotate(-0.6deg); }
+  40% { transform: translate(6px, -2px) rotate(0.6deg); }
+  60% { transform: translate(-4px, 1px) rotate(-0.3deg); }
+  80% { transform: translate(3px, 0) rotate(0.2deg); }
+}
+
+@keyframes schema-pulse {
+  0% { stroke-dashoffset: 1200; opacity: 1; }
+  70% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0.25; }
+}
+
+/* Preloader ships in the SSR HTML so it paints on the first frame. Repeat
+   visits and reduced-motion set data-preloader="skip" from an inline script in
+   <head>, before paint, so neither ever sees it flash. */
+:root[data-preloader="skip"] #preloader {
+  display: none;
+}
+
+/* Failsafe: if the JS bundle never arrives, the overlay must not trap the
+   visitor on top of content that is already server-rendered underneath.
+   React unmounts it long before this animation ends. */
+.preloader-failsafe {
+  animation: preloader-failsafe 8s step-end forwards;
+}
+
+@keyframes preloader-failsafe {
+  0%,
+  99% {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #preloader {
+    display: none;
+  }
+}

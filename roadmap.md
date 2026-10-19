@@ -1,0 +1,11 @@
+- [x] Review the full website's visual language and interaction patterns.
+- [x] Improve the Contact page to match those patterns while preserving all requested content and behavior.
+- [x] Verify the revised page on desktop and mobile, including interactions and metadata.
+- [x] Replace placeholder freelance projects with the four from the brief (Aurora Café, Lumen Studio, FitTrack, Kirana Kart)
+- [x] Responsive pass (phones/tablets): no sideways scroll, tap targets
+- [x] 404 page: 'QUERY RETURNED 0 ROWS.', SQL sub-line, BACK TO HOME, scattered 3D scene
+- [x] Services pillar: /services page, 4 freelance case studies, nav SERVICES + coral dot, browser-window 3D scene, footer freelance column
+- [x] Home page patch (uploaded brief): hero sub-line + HIRE ME button, TWO THINGS I DO, marquee, 4th card, 5th number, RECENT BUILDS
+- [x] Work page tabs verified: DATA & ANALYTICS / WEB DEVELOPMENT switch works, 4 freelance projects render, no errors
+- [x] Phone checklist: slower 3D turning on low-quality devices, TiltCard tilt disabled on touch, 44px tap targets on nav icon buttons (cursor off + tap-to-nudge in Playground were already in place)
+- [x] Final pass brief: pillar naming, DEMO BUILD tags, meta/noscript/JSON-LD, a11y toggles/FAQ/snap-row, responsive + reduced-motion re-check
