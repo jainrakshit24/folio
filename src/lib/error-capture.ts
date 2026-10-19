@@ -1,6 +1,6 @@
 /**
  * Rakshit Jain · Portfolio
- * Copyright (c) 2026 Rakshit Jain. All rights reserved.
+ * Copyright (c) 2026 Rakshit Jain.
  * https://github.com/jainrakshit24
  */
 // Captures the original Error out-of-band so server.ts can recover the stack

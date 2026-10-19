@@ -4,7 +4,8 @@
 
 ### *I build machines that turn data into decisions.*
 
-A playful, 3D-driven personal portfolio for a **Data Engineer** from Delhi NCR.
+My portfolio. I'm a **Data Engineer** in Delhi NCR, and this is the playful,
+3D-driven version of my CV.
 Not a template. Not a dark neon cyber-site. A warm, sunny, hand-made toy that happens to be a résumé.
 
 <br/>

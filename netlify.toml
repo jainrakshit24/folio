@@ -1,0 +1,9 @@
+# nitro picks its own preset from the build environment, so on Netlify it emits
+# a function into .netlify/functions-internal and the static files into dist.
+# The publish directory has to match that, not .output/public.
+[build]
+  command = "bun run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

@@ -1,11 +1,37 @@
-- [x] Review the full website's visual language and interaction patterns.
-- [x] Improve the Contact page to match those patterns while preserving all requested content and behavior.
-- [x] Verify the revised page on desktop and mobile, including interactions and metadata.
-- [x] Replace placeholder freelance projects with the four from the brief (Aurora Café, Lumen Studio, FitTrack, Kirana Kart)
-- [x] Responsive pass (phones/tablets): no sideways scroll, tap targets
-- [x] 404 page: 'QUERY RETURNED 0 ROWS.', SQL sub-line, BACK TO HOME, scattered 3D scene
-- [x] Services pillar: /services page, 4 freelance case studies, nav SERVICES + coral dot, browser-window 3D scene, footer freelance column
-- [x] Home page patch (uploaded brief): hero sub-line + HIRE ME button, TWO THINGS I DO, marquee, 4th card, 5th number, RECENT BUILDS
-- [x] Work page tabs verified: DATA & ANALYTICS / WEB DEVELOPMENT switch works, 4 freelance projects render, no errors
-- [x] Phone checklist: slower 3D turning on low-quality devices, TiltCard tilt disabled on touch, 44px tap targets on nav icon buttons (cursor off + tap-to-nudge in Playground were already in place)
-- [x] Final pass brief: pillar naming, DEMO BUILD tags, meta/noscript/JSON-LD, a11y toggles/FAQ/snap-row, responsive + reduced-motion re-check
+# Roadmap
+
+What I want to get to next, roughly in the order it bothers me.
+
+## Content
+
+- [ ] Real numbers on the two Careers360 case studies. The figures there now
+      describe the shape of the work, not its measured impact.
+- [ ] An `og:image`. `twitter:card` already claims `summary_large_image`, so
+      every shared link currently renders an empty card.
+- [ ] A portrait on `/about` instead of the placeholder.
+- [ ] Screenshots for the four freelance builds, and architecture sketches for
+      the remaining data projects.
+
+## Performance
+
+First load is ~201 kB gzip after moving three.js and the physics engine off the
+critical path. The rest of the list:
+
+- [ ] Prerender the static routes. Every page is server-rendered per request
+      today, which the content does not need.
+- [ ] `defaultPreload: "intent"` on the router so hovering a link warms it.
+- [ ] The custom cursor calls `elementFromPoint` on every pointer move and every
+      scroll, which forces layout. Coalesce it into one rAF.
+- [ ] Three separate rAF loops run at once (Lenis, the cursor, react-three-fiber).
+      They should share a ticker.
+- [ ] The main canvas never pauses. `/playground` already gates its frameloop on
+      visibility; the root canvas should do the same.
+- [ ] Trim the Google Fonts request. Ten weights load, nowhere near that many
+      get used.
+
+## Someday
+
+- [ ] Swap the full framer-motion import for `LazyMotion`, worth roughly 15 kB
+      gzip off the critical path.
+- [ ] Fix `bun run preview` so previewing a production build does not need
+      Wrangler by hand.

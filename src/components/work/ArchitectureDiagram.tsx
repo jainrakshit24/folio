@@ -1,6 +1,6 @@
 /**
  * Rakshit Jain · Portfolio
- * Copyright (c) 2026 Rakshit Jain. All rights reserved.
+ * Copyright (c) 2026 Rakshit Jain.
  * https://github.com/jainrakshit24
  */
 import { Arrow } from "@/components/site/Doodles";
