@@ -241,9 +241,9 @@ function Home() {
               transition={{ duration: 0.6, ease: EASE_IN }}
               className="prose-measure mt-8 rounded-3xl border-2 border-ink bg-paper/90 p-5 text-lg hard"
             >
-              Hi, I'm Rakshit. Data Engineer by day, freelance web developer by night. I build ETL
-              data systems and dashboards that don't break, and websites that actually make clients
-              money. Delhi NCR.
+              Curious by nature, driven by technology, and always building something new. I'm
+              Rakshit Jain, a Data Engineer and developer who enjoys solving real-world problems,
+              exploring ideas, and turning them into simple, useful products.
             </motion.p>
 
             <motion.div
