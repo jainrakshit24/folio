@@ -25,46 +25,21 @@ import {
   Sparkle,
   Star,
 } from "@/components/site/Doodles";
+import { seo } from "@/lib/seo";
+import { personSchema, websiteSchema } from "@/lib/schema";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title: "Rakshit Jain | Data Engineer & Freelance Web Developer, Delhi NCR" },
-      {
-        name: "description",
-        content:
-          "Rakshit Jain is a Data Engineer and freelance web developer in Delhi NCR. ETL work, dashboards, and fast animated websites for businesses and creators.",
-      },
-      { property: "og:title", content: "Rakshit Jain | Data Engineer & Freelance Web Developer" },
-      {
-        property: "og:description",
-        content:
-          "Rakshit Jain is a Data Engineer and freelance web developer in Delhi NCR. ETL work, dashboards, and fast animated websites for businesses and creators.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
+    ...seo({
+      path: "/",
+      title: "Rakshit Jain | Data Engineer & Freelance Web Developer, Delhi NCR",
+      description:
+        "Rakshit Jain is a Data Engineer and freelance web developer in Delhi NCR. ETL work, dashboards, and fast animated websites for businesses and creators.",
+      ogTitle: "Rakshit Jain | Data Engineer & Freelance Web Developer",
+    }),
     scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Person",
-          name: "Rakshit Jain",
-          jobTitle: ["Data Engineer", "Freelance Web Developer"],
-          email: "mailto:itsrakshitjain@gmail.com",
-          telephone: "+91-72067-53199",
-          address: { "@type": "PostalAddress", addressLocality: "Delhi NCR", addressCountry: "IN" },
-          sameAs: ["https://linkedin.com/in/jainrakshit24", "https://github.com/jainrakshit24"],
-          knowsAbout: [
-            "Data engineering",
-            "ETL pipelines",
-            "Analytics",
-            "Power BI",
-            "Web development",
-          ],
-        }),
-      },
+      { type: "application/ld+json", children: JSON.stringify(personSchema()) },
+      { type: "application/ld+json", children: JSON.stringify(websiteSchema()) },
     ],
   }),
   component: Home,

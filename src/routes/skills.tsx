@@ -9,22 +9,18 @@ import { useEffect, useState } from "react";
 import { PageShell } from "@/components/site/PageShell";
 import { EASE_IN } from "@/lib/toy";
 import { cn } from "@/lib/utils";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/skills")({
-  head: () => ({
-    meta: [
-      { title: "Skills: The Toolkit · Rakshit Jain" },
-      {
-        name: "description",
-        content:
-          "Python, SQL, ETL, Power BI, machine learning and QA tooling: what Rakshit Jain reaches for, grouped by what it's for.",
-      },
-      { property: "og:title", content: "Skills | Rakshit Jain" },
-      { property: "og:description", content: "What I reach for, grouped by what it's for." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    seo({
+      path: "/skills",
+      title: "Skills: The Toolkit · Rakshit Jain",
+      description:
+        "Python, SQL, ETL, Power BI, machine learning and QA tooling: what Rakshit Jain reaches for, grouped by what it's for.",
+      ogTitle: "Skills | Rakshit Jain",
+      ogDescription: "What I reach for, grouped by what it's for.",
+    }),
   component: Skills,
 });
 

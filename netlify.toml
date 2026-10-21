@@ -7,3 +7,33 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Baseline security headers. Deliberately no Content-Security-Policy yet: the
+# preloader runs an inline script and the case studies embed same-origin
+# diagram iframes, so a CSP needs its own testing pass rather than a guess.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+
+# Content-hashed bundles can be cached forever; a changed file gets a new name.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# The sitemap and the social card change without changing name, so they get a
+# short cache rather than the immutable one above.
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/og-image.png"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

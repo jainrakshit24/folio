@@ -18,20 +18,44 @@ import { QaCaseStudy } from "@/components/work/QaCaseStudy";
 import { ArchitectureDiagram } from "@/components/work/ArchitectureDiagram";
 import { EASE_IN, pop } from "@/lib/toy";
 import { cn } from "@/lib/utils";
+import { seo } from "@/lib/seo";
+import { breadcrumbSchema, caseStudySchema } from "@/lib/schema";
 
 export const Route = createFileRoute("/work/$slug")({
   head: ({ params }) => {
     const p = getProject(params.slug);
-    const title = p ? `${p.title} | Case study · Rakshit Jain` : "Case study | Rakshit Jain";
-    const description = p?.outcome ?? "A closer look at one of Rakshit Jain's data projects.";
+
+    // An unknown slug renders a dead end, so keep it out of the index rather
+    // than letting /work/<anything> become crawlable, duplicate boilerplate.
+    if (!p) {
+      return seo({
+        path: `/work/${params.slug}`,
+        title: "Case study not found | Rakshit Jain",
+        description: "That case study doesn't exist, but the rest of the work does.",
+        noindex: true,
+      });
+    }
+
+    const title = `${p.title} | Case study · Rakshit Jain`;
     return {
-      meta: [
-        { title },
-        { name: "description", content: description },
-        { property: "og:title", content: title },
-        { property: "og:description", content: description },
-        { property: "og:type", content: "article" },
-        { name: "twitter:card", content: "summary_large_image" },
+      ...seo({
+        path: `/work/${p.slug}`,
+        type: "article",
+        title,
+        description: p.outcome,
+      }),
+      scripts: [
+        { type: "application/ld+json", children: JSON.stringify(caseStudySchema(p)) },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(
+            breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Work", path: "/work" },
+              { name: p.title, path: `/work/${p.slug}` },
+            ]),
+          ),
+        },
       ],
     };
   },

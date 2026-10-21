@@ -9,22 +9,18 @@ import { useRef } from "react";
 import { PageShell } from "@/components/site/PageShell";
 import { ToyButton } from "@/components/site/ToyButton";
 import { EASE_IN } from "@/lib/toy";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/experience")({
-  head: () => ({
-    meta: [
-      { title: "Experience: Where I've Worked · Rakshit Jain" },
-      {
-        name: "description",
-        content:
-          "QA Engineer at Careers360, Engineering Intern at ONGC Videsh and Data Engineering Intern at HCLTech. Roles, ownership and shipped outcomes.",
-      },
-      { property: "og:title", content: "Experience | Rakshit Jain" },
-      { property: "og:description", content: "Careers360, ONGC Videsh, HCLTech: what I owned and what moved." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    seo({
+      path: "/experience",
+      title: "Experience: Where I've Worked · Rakshit Jain",
+      description:
+        "QA Engineer at Careers360, Engineering Intern at ONGC Videsh and Data Engineering Intern at HCLTech. Roles, ownership and shipped outcomes.",
+      ogTitle: "Experience | Rakshit Jain",
+      ogDescription: "Careers360, ONGC Videsh, HCLTech: what I owned and what moved.",
+    }),
   component: Experience,
 });
 

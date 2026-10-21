@@ -19,26 +19,22 @@ import {
 import { BrowserFrame } from "@/components/site/BrowserFrame";
 import { pop, spring } from "@/lib/toy";
 import { cn } from "@/lib/utils";
+import { seo } from "@/lib/seo";
+import { workListSchema } from "@/lib/schema";
 
 export const Route = createFileRoute("/work/")({
   validateSearch: (s: Record<string, unknown>): { track?: Track } =>
     s["track"] === "web" ? { track: "web" } : {},
   head: () => ({
-    meta: [
-      { title: "Work | Data Projects & Web Builds by Rakshit Jain" },
-      {
-        name: "description",
-        content:
-          "Data systems, models and dashboards, plus the websites Rakshit Jain builds for clients.",
-      },
-      { property: "og:title", content: "Work | Rakshit Jain" },
-      {
-        property: "og:description",
-        content: "Data systems, models and dashboards, plus the websites I build for clients.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
+    ...seo({
+      path: "/work",
+      title: "Work | Data Projects & Web Builds by Rakshit Jain",
+      description:
+        "Data systems, models and dashboards, plus the websites Rakshit Jain builds for clients.",
+      ogTitle: "Work | Rakshit Jain",
+      ogDescription: "Data systems, models and dashboards, plus the websites I build for clients.",
+    }),
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(workListSchema()) }],
   }),
   component: Work,
 });

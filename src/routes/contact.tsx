@@ -12,24 +12,18 @@ import { EASE_IN, pop } from "@/lib/toy";
 import { SectionLabel, WordReveal } from "@/components/site/PageShell";
 import { Sparkle, Squiggle, Star } from "@/components/site/Doodles";
 import { cn } from "@/lib/utils";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact: Let's Talk About Your Data | Rakshit Jain" },
-      {
-        name: "description",
-        content:
-          "Rakshit Jain is open to Data Engineer and Data Analyst roles, and to freelance data or dashboard work. Email, phone, LinkedIn, GitHub. Delhi NCR, India.",
-      },
-      { property: "og:title", content: "Contact: Let's Talk About Your Data | Rakshit Jain" },
-      {
-        property: "og:description",
-        content:
-          "Open to Data Engineer and Data Analyst roles, and to freelance data or dashboard work.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      path: "/contact",
+      title: "Contact: Let's Talk About Your Data | Rakshit Jain",
+      description:
+        "Rakshit Jain is open to Data Engineer and Data Analyst roles, and to freelance data or dashboard work. Email, phone, LinkedIn, GitHub. Delhi NCR, India.",
+      ogDescription:
+        "Open to Data Engineer and Data Analyst roles, and to freelance data or dashboard work.",
+    }),
   validateSearch: (s: Record<string, unknown>): { subject?: string } =>
     typeof s["subject"] === "string" ? { subject: s["subject"] } : {},
   component: Contact,

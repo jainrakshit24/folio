@@ -1,0 +1,72 @@
+<!--
+  Source for public/og-image.png, the 1200x630 card every shared link renders.
+  Regenerate after editing:
+
+    google-chrome --headless=new --hide-scrollbars --force-device-scale-factor=1 \
+      --window-size=1200,630 --virtual-time-budget=6000 \
+      --screenshot=public/og-image.png scripts/og-image.html
+
+  Keep it at exactly 1200x630: that is the ratio Twitter, LinkedIn, Slack and
+  WhatsApp all crop to, and anything else gets letterboxed.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&family=JetBrains+Mono:wght@600&display=swap">
+<style>
+  :root{
+    --cream: oklch(0.973 0.021 79.5); --paper: oklch(1 0 0);
+    --ink: oklch(0.194 0.008 67.5);   --coral: oklch(0.674 0.208 33.5);
+    --sunny: oklch(0.85 0.166 85.5);  --mint: oklch(0.784 0.153 168);
+    --sky: oklch(0.57 0.213 265.5);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1200px;height:630px;overflow:hidden}
+  body{
+    background-color:var(--cream);
+    background-image:radial-gradient(var(--ink) 1.4px, transparent 1.4px);
+    background-size:28px 28px; background-position:-6px -6px;
+    font-family:"Poppins",system-ui,sans-serif; color:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .card{
+    width:1094px; height:524px; background:var(--cream);
+    border:5px solid var(--ink); border-radius:34px;
+    box-shadow:13px 13px 0 var(--ink);
+    padding:46px 56px; display:flex; flex-direction:column; justify-content:space-between;
+    position:relative; overflow:hidden;
+  }
+  .pill{
+    display:inline-flex; align-items:center; gap:10px; align-self:flex-start;
+    border:3px solid var(--ink); border-radius:999px; background:var(--paper);
+    padding:9px 20px; font-size:19px; font-weight:800; letter-spacing:.13em; text-transform:uppercase;
+    box-shadow:5px 5px 0 var(--ink);
+  }
+  h1{font-size:79px; margin-bottom:10px; line-height:.95; font-weight:800; letter-spacing:-.025em; text-transform:uppercase}
+  .hl{position:relative; display:inline-block; color:var(--coral)}
+  .hl svg{position:absolute; left:0; bottom:-11px; width:100%; height:18px; color:var(--coral)}
+  .foot{display:flex; align-items:flex-end; justify-content:space-between; gap:24px}
+  .name{font-size:38px; font-weight:800; letter-spacing:-.01em}
+  .role{margin-top:6px; font-size:23px; font-weight:600; color:var(--ink); opacity:.78}
+  .url{
+    font-family:"JetBrains Mono",monospace; font-size:22px; font-weight:600;
+    border:3px solid var(--ink); border-radius:14px; background:var(--sunny);
+    padding:11px 19px; box-shadow:5px 5px 0 var(--ink); white-space:nowrap;
+  }
+  .blob{position:absolute; border-radius:50%; border:4px solid var(--ink)}
+  .b1{width:120px;height:120px;background:var(--mint);right:-38px;top:-38px}
+  .b2{width:74px;height:74px;background:var(--sky);right:96px;top:62px}
+  .star{position:absolute;right:50px;bottom:142px;font-size:46px;color:var(--sunny);
+        -webkit-text-stroke:3px var(--ink)}
+</style></head>
+<body><div class="card">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <span class="pill">Data &nbsp;·&nbsp; Dashboards &nbsp;·&nbsp; Websites</span>
+  <h1>I build machines<br>that turn data<br>into <span class="hl">decisions.<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none"><path d="M2 8 C40 2, 80 10, 118 5 S 170 3, 198 7" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg></span></h1>
+  <div class="foot">
+    <div><div class="name">RAKSHIT JAIN</div>
+      <div class="role">Data Engineer &nbsp;·&nbsp; Freelance Web Developer &nbsp;·&nbsp; Delhi NCR</div></div>
+    <div class="url">jainrakshit.tech</div>
+  </div>
+  <span class="star">✱</span>
+</div></body></html>

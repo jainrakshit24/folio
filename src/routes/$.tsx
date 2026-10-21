@@ -7,19 +7,17 @@ import { createFileRoute, Link, useRouterState } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { SectionLabel, WordReveal } from "@/components/site/PageShell";
 import { EASE_IN } from "@/lib/toy";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/$")({
-  head: () => ({
-    meta: [
-      { title: "404: Query Returned 0 Rows | Rakshit Jain" },
-      { name: "description", content: "That page doesn't exist on Rakshit Jain's portfolio." },
-      { property: "og:title", content: "404: Query Returned 0 Rows" },
-      { property: "og:description", content: "That page doesn't exist on Rakshit Jain's portfolio." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "robots", content: "noindex" },
-    ],
-  }),
+  head: () =>
+    seo({
+      path: "/404",
+      title: "404: Query Returned 0 Rows | Rakshit Jain",
+      description: "That page doesn't exist on Rakshit Jain's portfolio.",
+      ogTitle: "404: Query Returned 0 Rows",
+      noindex: true,
+    }),
   component: NotFoundPage,
 });
 

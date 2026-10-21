@@ -9,22 +9,18 @@ import { PageShell } from "@/components/site/PageShell";
 import { ToyButton } from "@/components/site/ToyButton";
 import { Sparkle } from "@/components/site/Doodles";
 import { EASE_IN } from "@/lib/toy";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/education")({
-  head: () => ({
-    meta: [
-      { title: "Education: The Foundation · Rakshit Jain" },
-      {
-        name: "description",
-        content:
-          "B.Tech in Computer Science & Engineering (Data Science) and a Computer Science diploma, plus a peer-reviewed publication in IJSREM.",
-      },
-      { property: "og:title", content: "Education | Rakshit Jain" },
-      { property: "og:description", content: "Degrees, specialisations and the published paper." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    seo({
+      path: "/education",
+      title: "Education: The Foundation · Rakshit Jain",
+      description:
+        "B.Tech in Computer Science & Engineering (Data Science) and a Computer Science diploma, plus a peer-reviewed publication in IJSREM.",
+      ogTitle: "Education | Rakshit Jain",
+      ogDescription: "Degrees, specialisations and the published paper.",
+    }),
   component: Education,
 });
 

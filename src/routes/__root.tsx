@@ -134,7 +134,9 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         <noscript>
           <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
-            <h1>Rakshit Jain, Data Engineer &amp; Freelance Web Developer</h1>
+            {/* h2, not h1: crawlers that skip JS would otherwise see this
+                heading and the page's real <h1> as two competing h1s. */}
+            <h2>Rakshit Jain, Data Engineer &amp; Freelance Web Developer</h2>
             <p>{"Rakshit Jain is a Data Engineer and freelance web developer in Delhi NCR. ETL work, dashboards, and fast animated websites for businesses and creators."}</p>
             <p>Two things I do: data engineering &amp; analytics (Python, SQL, ETL, Power BI), and freelance web development (fast, responsive, animated websites and landing pages).</p>
             <p>Email: <a href="mailto:itsrakshitjain@gmail.com">itsrakshitjain@gmail.com</a> · Phone: +91 72067 53199 · <a href="https://linkedin.com/in/jainrakshit24">LinkedIn</a> · <a href="https://github.com/jainrakshit24">GitHub</a></p>

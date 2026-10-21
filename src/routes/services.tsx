@@ -14,47 +14,21 @@ import { useMagnetic } from "@/components/site/ToyButton";
 import { FREELANCE } from "@/lib/projects";
 import { EASE_IN, pop, spring } from "@/lib/toy";
 import { cn } from "@/lib/utils";
+import { seo } from "@/lib/seo";
+import { serviceSchema } from "@/lib/schema";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
-    meta: [
-      { title: "Services | Freelance Web Development · Rakshit Jain" },
-      {
-        name: "description",
-        content:
-          "Fast, responsive, properly animated websites, landing pages and dashboards from Delhi NCR, built by someone who understands the data behind them.",
-      },
-      { property: "og:title", content: "I build websites that pull their weight | Rakshit Jain" },
-      {
-        property: "og:description",
-        content:
-          "Business sites, landing pages, portfolios and dashboards. Pricing, process and builds in one page.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Service",
-          name: "Freelance Web Development",
-          serviceType: "Web development",
-          description:
-            "Fast, responsive, animated websites, landing pages and dashboards for businesses and creators.",
-          provider: {
-            "@type": "Person",
-            name: "Rakshit Jain",
-            email: "mailto:itsrakshitjain@gmail.com",
-          },
-          areaServed: [
-            { "@type": "Place", name: "Delhi NCR, India" },
-            { "@type": "Place", name: "Remote" },
-          ],
-        }),
-      },
-    ],
+    ...seo({
+      path: "/services",
+      title: "Services | Freelance Web Development · Rakshit Jain",
+      description:
+        "Fast, responsive, properly animated websites, landing pages and dashboards from Delhi NCR, built by someone who understands the data behind them.",
+      ogTitle: "I build websites that pull their weight | Rakshit Jain",
+      ogDescription:
+        "Business sites, landing pages, portfolios and dashboards. Pricing, process and builds in one page.",
+    }),
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(serviceSchema()) }],
   }),
   component: Services,
 });

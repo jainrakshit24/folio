@@ -13,22 +13,20 @@ import { DoodleArrow, Sparkle, Star } from "@/components/site/Doodles";
 import { CONFETTI_COLORS, hasWebGL, prefersReducedMotion } from "@/lib/toy";
 import { cn } from "@/lib/utils";
 import type { SandboxHandle } from "@/components/playground/Sandbox";
+import { seo } from "@/lib/seo";
 
 const Sandbox = lazy(() => import("@/components/playground/Sandbox"));
 
 const DESC = "A genuinely playable physics toy box: grab, throw and shake Rakshit Jain's skills as chunky cubes.";
 
 export const Route = createFileRoute("/playground")({
-  head: () => ({
-    meta: [
-      { title: "Playground: Go On, Break Something | Rakshit Jain" },
-      { name: "description", content: DESC },
-      { property: "og:title", content: "Playground: Go On, Break Something" },
-      { property: "og:description", content: DESC },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    seo({
+      path: "/playground",
+      title: "Playground: Go On, Break Something | Rakshit Jain",
+      description: DESC,
+      ogTitle: "Playground: Go On, Break Something",
+    }),
   component: PlaygroundPage,
 });
 
