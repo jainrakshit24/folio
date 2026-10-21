@@ -7,6 +7,7 @@ import { Link } from "@tanstack/react-router";
 
 import { ToyButton } from "./ToyButton";
 import { Arrow, Star } from "./Doodles";
+import { VisitorCount } from "./VisitorCount";
 
 export function Footer() {
   return (
@@ -73,10 +74,13 @@ export function Footer() {
           </span>
         </Link>
 
-        <p className="num flex items-center gap-2 text-[11px] uppercase tracking-[0.2em]">
-          <Star aria-hidden="true" className="h-4 w-4 text-sunny" />
-          Built with too much coffee ☕ · Delhi NCR
-        </p>
+        <div className="flex flex-wrap items-center justify-between gap-5">
+          <p className="num flex items-center gap-2 text-[11px] uppercase tracking-[0.2em]">
+            <Star aria-hidden="true" className="h-4 w-4 text-sunny" />
+            Built with too much coffee ☕ · Delhi NCR
+          </p>
+          <VisitorCount />
+        </div>
       </div>
     </footer>
   );

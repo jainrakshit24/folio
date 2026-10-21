@@ -18,6 +18,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportError } from "../lib/report-error";
 import { SiteShell } from "@/components/site/SiteShell";
+import { GOATCOUNTER_CODE, GOATCOUNTER_ORIGIN } from "@/lib/analytics";
 
 function NotFoundComponent() {
   return (
@@ -106,6 +107,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon-192.png", type: "image/png", sizes: "192x192" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
     ],
+    // Cookie-free analytics, so no consent banner. Omitted entirely when
+    // VITE_GOATCOUNTER_CODE is unset, which keeps the site self-contained
+    // until the counter is actually configured.
+    scripts: GOATCOUNTER_CODE
+      ? [
+          {
+            src: "https://gc.zgo.at/count.js",
+            async: true,
+            "data-goatcounter": `${GOATCOUNTER_ORIGIN}/count`,
+          },
+        ]
+      : [],
   }),
   shellComponent: RootShell,
   component: RootComponent,

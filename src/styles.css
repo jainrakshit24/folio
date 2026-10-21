@@ -237,6 +237,43 @@
   }
 }
 
+/* Soft halo behind the footer visitor counter. `isolation: isolate` keeps the
+   z-index: -1 pseudo-element behind the badge without dropping it behind the
+   footer itself. The global prefers-reduced-motion rule freezes the breathing. */
+.counter-halo {
+  position: relative;
+  isolation: isolate;
+}
+
+.counter-halo::before {
+  content: "";
+  position: absolute;
+  inset: -55% -18%;
+  z-index: -1;
+  border-radius: 999px;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in oklab, var(--sunny) 85%, transparent),
+    color-mix(in oklab, var(--sunny) 25%, transparent) 60%,
+    transparent 78%
+  );
+  filter: blur(13px);
+  animation: counter-halo 3.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes counter-halo {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.97);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.06);
+  }
+}
+
 /* Marker-swipe highlight block */
 .highlight-sunny {
   display: inline-block;

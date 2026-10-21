@@ -20,12 +20,15 @@ export function CountUp({
   prefix = "",
   duration = 1200,
   className,
+  format,
 }: {
   value: number;
   suffix?: string;
   prefix?: string;
   duration?: number;
   className?: string;
+  /** Formats the running number, e.g. for thousands separators. */
+  format?: (n: number) => string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const [shown, setShown] = useState(value);
@@ -71,7 +74,7 @@ export function CountUp({
   return (
     <span ref={ref} className={className}>
       {prefix}
-      {shown}
+      {format ? format(shown) : shown}
       {suffix}
     </span>
   );

@@ -4,6 +4,7 @@
  * https://github.com/jainrakshit24
  */
 import { useState, type ReactNode } from "react";
+import { useRouterState } from "@tanstack/react-router";
 import { Nav } from "./Nav";
 import { Footer } from "./Footer";
 import { CustomCursor } from "./CustomCursor";
@@ -12,11 +13,17 @@ import { PageTransition } from "./PageTransition";
 import { SmoothScroll } from "./SmoothScroll";
 import { FactoryCanvas } from "@/components/factory/FactoryCanvas";
 import { Toaster } from "@/components/ui/sonner";
+import { usePageViewTracking } from "@/lib/analytics";
 
 export function SiteShell({ children }: { children: ReactNode }) {
   // Flips once the preloader has finished (or decided to skip itself), which
   // gates the WebGL chunk so it never competes with the preloader animation.
   const [ready, setReady] = useState(false);
+
+  // The GoatCounter script only sees the first load; every client-side route
+  // change after that has to be reported by hand.
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  usePageViewTracking(pathname);
 
   return (
     <>

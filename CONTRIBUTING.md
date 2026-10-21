@@ -40,8 +40,9 @@ fine. Anything that touches dependencies is not.
   build: content hashes should only move for code that actually changed.
 - **The 3D has two paths.** `FactoryCanvas` falls back to a flat SVG when WebGL is
   missing or the visitor prefers reduced motion. Both have to keep working.
-- **No CDN assets.** Everything is self-contained except the Google Fonts
-  stylesheet in `src/routes/__root.tsx`.
+- **No CDN assets.** Everything is self-contained except two third-party
+  requests: the Google Fonts stylesheet in `src/routes/__root.tsx`, and the
+  GoatCounter script, which only loads when `VITE_GOATCOUNTER_CODE` is set.
 - Design tokens live in `src/styles.css` under `@theme`. Use them rather than
   hardcoding hex values or inventing new shadows.
 
