@@ -3,7 +3,7 @@
  * Copyright (c) 2026 Rakshit Jain.
  * https://github.com/jainrakshit24
  */
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { PageShell } from "@/components/site/PageShell";
@@ -162,7 +162,16 @@ function Experience() {
         <ul className="mt-10 rounded-2xl border-2 border-dashed border-ink/40 p-5 text-[14px]">
           <li className="flex gap-3">
             <span aria-hidden="true" className="mt-[7px] h-2.5 w-2.5 shrink-0 rounded-[3px] border-2 border-ink bg-mint" />
-            <span><strong className="font-display">Side note:</strong> I also handle social media management for a few brands: content calendars, creatives and reporting.</span>
+            <span>
+              <strong className="font-display">Side note:</strong> I also handle{" "}
+              <Link
+                to="/services"
+                className="font-semibold underline decoration-2 underline-offset-4"
+              >
+                social media management
+              </Link>{" "}
+              for a few brands: content calendars, creatives and reporting.
+            </span>
           </li>
         </ul>
       </div>

@@ -18,7 +18,7 @@ export function personSchema() {
     name: "Rakshit Jain",
     url: SITE_URL,
     image: absoluteUrl("/og-image.png"),
-    jobTitle: ["Data Engineer", "Freelance Web Developer"],
+    jobTitle: ["Data Engineer", "Freelance Web Developer", "Social Media Manager"],
     description:
       "Data Engineer and freelance web developer in Delhi NCR. ETL pipelines, dashboards and fast animated websites.",
     email: "mailto:itsrakshitjain@gmail.com",
@@ -41,6 +41,8 @@ export function personSchema() {
       "Data quality",
       "Web development",
       "React",
+      "Social media management",
+      "Content strategy",
     ],
   };
 }
@@ -73,11 +75,11 @@ export function serviceSchema() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": `${SITE_URL}/services#service`,
-    name: "Rakshit Jain, Freelance Web Development",
+    name: "Rakshit Jain, Freelance Web Development & Social Media",
     url: absoluteUrl("/services"),
     image: absoluteUrl("/og-image.png"),
     description:
-      "Freelance web development in Delhi NCR: business websites, landing pages, portfolios and dashboards, built fast and responsive.",
+      "Freelance web development and social media management in Delhi NCR: business websites, landing pages, dashboards, content calendars, creatives and reporting.",
     provider: { "@id": PERSON_ID },
     founder: { "@id": PERSON_ID },
     email: "mailto:itsrakshitjain@gmail.com",
@@ -90,7 +92,16 @@ export function serviceSchema() {
       { "@type": "Country", name: "India" },
     ],
     availableLanguage: ["en", "hi"],
-    knowsAbout: ["Web development", "React", "Landing pages", "Dashboards", "Responsive design"],
+    knowsAbout: [
+      "Web development",
+      "React",
+      "Landing pages",
+      "Dashboards",
+      "Responsive design",
+      "Social media management",
+      "Content calendars",
+      "Social media analytics",
+    ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Freelance web development",
@@ -99,6 +110,10 @@ export function serviceSchema() {
         offer("Landing pages", "Single-page builds aimed at conversion."),
         offer("Portfolios & creator sites", "Personal sites for creators and professionals."),
         offer("Dashboards & internal tools", "Data dashboards and internal tooling."),
+        offer(
+          "Social media management",
+          "Content calendars, post and reel creatives, and monthly reporting across Instagram, LinkedIn, Facebook and YouTube.",
+        ),
       ],
     },
   };

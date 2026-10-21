@@ -21,12 +21,12 @@ export const Route = createFileRoute("/services")({
   head: () => ({
     ...seo({
       path: "/services",
-      title: "Freelance Web Developer in Delhi NCR | Rakshit Jain",
+      title: "Freelance Web Developer & Social Media Manager, Delhi NCR",
       description:
-        "Hire a freelance web developer in Delhi NCR for business websites, landing pages and dashboards. Fixed quotes, fast builds, no templates.",
-      ogTitle: "I build websites that pull their weight | Rakshit Jain",
+        "Rakshit Jain: freelance web development and social media management in Delhi NCR. Websites, landing pages, dashboards, content calendars and reporting.",
+      ogTitle: "Websites and social media that pull their weight | Rakshit Jain",
       ogDescription:
-        "Business sites, landing pages, portfolios and dashboards. Pricing, process and builds in one page.",
+        "Business sites, landing pages, dashboards and social media management. Pricing, process and past builds in one page.",
     }),
     scripts: [{ type: "application/ld+json", children: JSON.stringify(serviceSchema()) }],
   }),
@@ -90,6 +90,22 @@ const SERVICES = [
       "Admin panels, CRUD, auth, roles",
       "Database design, queries, API wiring",
       "Automated reports and scheduled jobs",
+    ],
+  },
+  {
+    icon: "\ud83d\udce3",
+    name: "SOCIAL MEDIA MANAGEMENT",
+    tone: "sunny",
+    // Spans both columns: a fifth card in a two-up grid would otherwise sit
+    // alone on the last row and read like a mistake.
+    wide: true,
+    pitch:
+      "Content calendars, creatives and monthly reporting, run by someone who can actually read the numbers underneath.",
+    items: [
+      "Monthly content calendar, planned instead of improvised",
+      "Post, story and reel creatives kept on-brand",
+      "Instagram, LinkedIn, Facebook and YouTube",
+      "Reporting that says what worked, not just what posted",
     ],
   },
 ];
@@ -323,6 +339,7 @@ function WhatIBuild() {
             key={s.name}
             {...fade}
             transition={{ ...fade.transition, delay: (i % 2) * 0.08 }}
+            className={cn("wide" in s && s.wide && "md:col-span-2")}
           >
             <TiltCard rest={i % 2 ? 1.5 : -1.5} className="h-full overflow-hidden bg-paper">
               <div
