@@ -28,9 +28,9 @@ export const Route = createFileRoute("/work/")({
   head: () => ({
     ...seo({
       path: "/work",
-      title: "Work | Data Projects & Web Builds by Rakshit Jain",
+      title: "Portfolio | Data Engineering & Web Projects | Rakshit Jain",
       description:
-        "Data systems, models and dashboards, plus the websites Rakshit Jain builds for clients.",
+        "Nine case studies: ETL pipelines, data validation, explainable ML and client websites. What the problem was, what I built, and what changed.",
       ogTitle: "Work | Rakshit Jain",
       ogDescription: "Data systems, models and dashboards, plus the websites I build for clients.",
     }),

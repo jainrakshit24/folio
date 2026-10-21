@@ -15,9 +15,9 @@ export const Route = createFileRoute("/experience")({
   head: () =>
     seo({
       path: "/experience",
-      title: "Experience: Where I've Worked · Rakshit Jain",
+      title: "Experience | Data Engineer at Careers360 | Rakshit Jain",
       description:
-        "QA Engineer at Careers360, Engineering Intern at ONGC Videsh and Data Engineering Intern at HCLTech. Roles, ownership and shipped outcomes.",
+        "QA Engineer at Careers360, Engineering Intern at ONGC Videsh, Data Engineering Intern at HCLTech. What I owned in each role and what shipped.",
       ogTitle: "Experience | Rakshit Jain",
       ogDescription: "Careers360, ONGC Videsh, HCLTech: what I owned and what moved.",
     }),

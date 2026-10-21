@@ -15,9 +15,9 @@ export const Route = createFileRoute("/education")({
   head: () =>
     seo({
       path: "/education",
-      title: "Education: The Foundation · Rakshit Jain",
+      title: "Education & Research | Rakshit Jain, Data Engineer",
       description:
-        "B.Tech in Computer Science & Engineering (Data Science) and a Computer Science diploma, plus a peer-reviewed publication in IJSREM.",
+        "B.Tech in Computer Science & Engineering (Data Science), a Computer Science diploma, and a peer-reviewed paper published in IJSREM.",
       ogTitle: "Education | Rakshit Jain",
       ogDescription: "Degrees, specialisations and the published paper.",
     }),

@@ -21,9 +21,9 @@ export const Route = createFileRoute("/services")({
   head: () => ({
     ...seo({
       path: "/services",
-      title: "Services | Freelance Web Development · Rakshit Jain",
+      title: "Freelance Web Developer in Delhi NCR | Rakshit Jain",
       description:
-        "Fast, responsive, properly animated websites, landing pages and dashboards from Delhi NCR, built by someone who understands the data behind them.",
+        "Hire a freelance web developer in Delhi NCR for business websites, landing pages and dashboards. Fixed quotes, fast builds, no templates.",
       ogTitle: "I build websites that pull their weight | Rakshit Jain",
       ogDescription:
         "Business sites, landing pages, portfolios and dashboards. Pricing, process and builds in one page.",

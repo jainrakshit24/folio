@@ -32,7 +32,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     ...seo({
       path: "/",
-      title: "Rakshit Jain | Data Engineer & Freelance Web Developer, Delhi NCR",
+      title: "Rakshit Jain | Data Engineer & Web Developer, Delhi NCR",
       description:
         "Rakshit Jain is a Data Engineer and freelance web developer in Delhi NCR. ETL work, dashboards, and fast animated websites for businesses and creators.",
       ogTitle: "Rakshit Jain | Data Engineer & Freelance Web Developer",

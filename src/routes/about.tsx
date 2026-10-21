@@ -10,19 +10,22 @@ import { SectionLabel, WordReveal } from "@/components/site/PageShell";
 import { ToyButton } from "@/components/site/ToyButton";
 import { Arrow, Squiggle, Star } from "@/components/site/Doodles";
 import { seo } from "@/lib/seo";
+import { profilePageSchema } from "@/lib/schema";
 
 export const Route = createFileRoute("/about")({
-  head: () =>
-    seo({
+  head: () => ({
+    ...seo({
       path: "/about",
       type: "profile",
-      title: "About | Rakshit Jain, Data Engineer, Delhi NCR",
+      title: "About Rakshit Jain | Data Engineer in Delhi NCR",
       description:
-        "Rakshit Jain builds the plumbing behind the dashboard: ETL at HCLTech, reporting automation at ONGC Videsh, QA engineering at Careers360, and explainable ML with OPTI-Recourse.",
+        "Data Engineer in Delhi NCR. ETL at HCLTech, reporting automation at ONGC Videsh, QA engineering at Careers360, and explainable ML with OPTI-Recourse.",
       ogTitle: "About | Rakshit Jain",
       ogDescription:
         "Data engineer from Delhi NCR: data systems, validation, and models that explain themselves.",
     }),
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(profilePageSchema()) }],
+  }),
   component: About,
 });
 

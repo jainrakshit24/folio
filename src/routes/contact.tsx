@@ -18,9 +18,9 @@ export const Route = createFileRoute("/contact")({
   head: () =>
     seo({
       path: "/contact",
-      title: "Contact: Let's Talk About Your Data | Rakshit Jain",
+      title: "Contact Rakshit Jain | Data Engineer & Web Developer",
       description:
-        "Rakshit Jain is open to Data Engineer and Data Analyst roles, and to freelance data or dashboard work. Email, phone, LinkedIn, GitHub. Delhi NCR, India.",
+        "Open to Data Engineer and Data Analyst roles, and to freelance website or dashboard work. Email, phone, LinkedIn and GitHub, all in one place.",
       ogDescription:
         "Open to Data Engineer and Data Analyst roles, and to freelance data or dashboard work.",
     }),

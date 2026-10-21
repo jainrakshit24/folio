@@ -57,20 +57,64 @@ export function websiteSchema() {
   };
 }
 
+/**
+ * ProfessionalService rather than plain Service: it carries the local signals
+ * (areaServed, address, contact) that a freelancer competing on "web developer
+ * in Delhi NCR" needs. No priceRange, because the page quotes no prices and
+ * inventing one would be fabricated markup.
+ */
 export function serviceSchema() {
+  const offer = (name: string, description: string) => ({
+    "@type": "Offer",
+    itemOffered: { "@type": "Service", name, description },
+  });
+
   return {
     "@context": "https://schema.org",
-    "@type": "Service",
-    name: "Freelance Web Development",
-    serviceType: "Web development",
+    "@type": "ProfessionalService",
+    "@id": `${SITE_URL}/services#service`,
+    name: "Rakshit Jain, Freelance Web Development",
     url: absoluteUrl("/services"),
+    image: absoluteUrl("/og-image.png"),
     description:
-      "Fast, responsive, animated websites, landing pages and dashboards for businesses and creators.",
+      "Freelance web development in Delhi NCR: business websites, landing pages, portfolios and dashboards, built fast and responsive.",
     provider: { "@id": PERSON_ID },
+    founder: { "@id": PERSON_ID },
+    email: "mailto:itsrakshitjain@gmail.com",
+    telephone: "+91-72067-53199",
+    address: { "@type": "PostalAddress", addressLocality: "Delhi NCR", addressCountry: "IN" },
     areaServed: [
       { "@type": "Place", name: "Delhi NCR, India" },
-      { "@type": "Place", name: "Remote" },
+      { "@type": "Place", name: "Noida, India" },
+      { "@type": "Place", name: "Gurugram, India" },
+      { "@type": "Country", name: "India" },
     ],
+    availableLanguage: ["en", "hi"],
+    knowsAbout: ["Web development", "React", "Landing pages", "Dashboards", "Responsive design"],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Freelance web development",
+      itemListElement: [
+        offer("Business & brand websites", "Multi-page responsive sites with a CMS you can edit."),
+        offer("Landing pages", "Single-page builds aimed at conversion."),
+        offer("Portfolios & creator sites", "Personal sites for creators and professionals."),
+        offer("Dashboards & internal tools", "Data dashboards and internal tooling."),
+      ],
+    },
+  };
+}
+
+/** Marks /about as the authoritative page about the Person entity. */
+export function profilePageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    url: absoluteUrl("/about"),
+    name: "About Rakshit Jain",
+    isPartOf: { "@id": SITE_ID },
+    about: { "@id": PERSON_ID },
+    mainEntity: { "@id": PERSON_ID },
+    inLanguage: "en-IN",
   };
 }
 

@@ -17,13 +17,14 @@ import { seo } from "@/lib/seo";
 
 const Sandbox = lazy(() => import("@/components/playground/Sandbox"));
 
-const DESC = "A genuinely playable physics toy box: grab, throw and shake Rakshit Jain's skills as chunky cubes.";
+const DESC =
+  "A genuinely playable physics toy box built with React Three Fiber and Rapier. Grab, throw and shake Rakshit Jain's skills around as chunky cubes.";
 
 export const Route = createFileRoute("/playground")({
   head: () =>
     seo({
       path: "/playground",
-      title: "Playground: Go On, Break Something | Rakshit Jain",
+      title: "Playground | Interactive 3D Experiments | Rakshit Jain",
       description: DESC,
       ogTitle: "Playground: Go On, Break Something",
     }),

@@ -19,6 +19,7 @@ import { ArchitectureDiagram } from "@/components/work/ArchitectureDiagram";
 import { EASE_IN, pop } from "@/lib/toy";
 import { cn } from "@/lib/utils";
 import { seo } from "@/lib/seo";
+import { categoryLabel } from "@/lib/projects";
 import { breadcrumbSchema, caseStudySchema } from "@/lib/schema";
 
 export const Route = createFileRoute("/work/$slug")({
@@ -36,13 +37,16 @@ export const Route = createFileRoute("/work/$slug")({
       });
     }
 
-    const title = `${p.title} | Case study · Rakshit Jain`;
+    // Keyword order matters in a SERP: the project name people might search
+    // for, then the discipline, then the brand.
+    const title = `${p.seoTitle} | ${categoryLabel(p.category)} | Rakshit Jain`;
     return {
       ...seo({
         path: `/work/${p.slug}`,
         type: "article",
         title,
-        description: p.outcome,
+        description: p.seoDescription,
+        ogTitle: `${p.seoTitle}, a ${categoryLabel(p.category).toLowerCase()} case study`,
       }),
       scripts: [
         { type: "application/ld+json", children: JSON.stringify(caseStudySchema(p)) },

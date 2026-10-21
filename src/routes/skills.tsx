@@ -15,9 +15,9 @@ export const Route = createFileRoute("/skills")({
   head: () =>
     seo({
       path: "/skills",
-      title: "Skills: The Toolkit · Rakshit Jain",
+      title: "Skills | Python, SQL, ETL & Power BI | Rakshit Jain",
       description:
-        "Python, SQL, ETL, Power BI, machine learning and QA tooling: what Rakshit Jain reaches for, grouped by what it's for.",
+        "The tools I actually use: Python, SQL, ETL pipelines, Power BI, machine learning and QA automation, grouped by what each one is for.",
       ogTitle: "Skills | Rakshit Jain",
       ogDescription: "What I reach for, grouped by what it's for.",
     }),

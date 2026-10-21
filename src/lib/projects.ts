@@ -21,6 +21,18 @@ export type Project = {
   product?: boolean;
   /** Static architecture diagram under /public/diagrams, embedded on the case study. */
   diagram?: string;
+  /**
+   * Proper-cased, short name for the <title> tag. `title` is all-caps because
+   * the page design shouts it; search results are not the place for that, and
+   * Google rewrites all-caps titles anyway.
+   */
+  seoTitle: string;
+  /**
+   * Meta description for this case study. `outcome` is written for the page and
+   * runs anywhere from 39 to 197 characters; a search snippet wants 140-160, or
+   * Google truncates it or writes its own.
+   */
+  seoDescription: string;
   tone?: "sunny" | "grape" | "mint" | "coral" | "sky";
   /* case study */
   role: string;
@@ -45,6 +57,9 @@ export const PROJECTS: Project[] = [
   {
     num: "00",
     slug: "qa-data-desk",
+    seoDescription:
+      "Open-source database investigation platform for QA engineers, built with Python and Streamlit. Eight tools, 384 tests, and read-only by design.",
+    seoTitle: "Data Desk",
     diagram: "/diagrams/data-desk-architecture.html",
     title: "DATA DESK",
     outcome:
@@ -69,6 +84,9 @@ export const PROJECTS: Project[] = [
   {
     num: "01",
     slug: "opti-recourse",
+    seoDescription:
+      "Credit-risk prediction platform that explains every rejection and tells the borrower how to flip it, using XGBoost, SHAP and algorithmic recourse.",
+    seoTitle: "OPTI-Recourse",
     diagram: "/diagrams/opti-recourse-architecture.html",
     title: "OPTI-RECOURSE",
     outcome:
@@ -115,6 +133,9 @@ export const PROJECTS: Project[] = [
   {
     num: "02",
     slug: "campaign-data-integrity",
+    seoDescription:
+      "Reconciled client, campaign and delivery-unit data across three master sources on an ad platform, and proved where the docs and the live system disagreed.",
+    seoTitle: "Ad Campaign Data Integrity",
     title: "AD CAMPAIGN DATA INTEGRITY",
     outcome:
       "Reconciled an ad platform's client, campaign and delivery-unit data across three master sources and the APIs on top of them, and proved where the documented behaviour and the live system disagreed.",
@@ -149,6 +170,9 @@ export const PROJECTS: Project[] = [
   {
     num: "03",
     slug: "college-predictor-data",
+    seoDescription:
+      "Validated the ranks, counts and field mappings behind a student-facing prediction tool by recomputing every aggregate from source instead of trusting it.",
+    seoTitle: "College Predictor Data QA",
     title: "COLLEGE PREDICTOR DATA VALIDATION",
     outcome:
       "Validated the ranks, counts and field mappings behind a student-facing prediction tool by recomputing every aggregate from source rather than trusting what the application had stored.",
@@ -181,6 +205,9 @@ export const PROJECTS: Project[] = [
   {
     num: "04",
     slug: "ongc-intranet",
+    seoDescription:
+      "Rebuilt how 500+ people at ONGC Videsh found documents and got their weekly numbers, and took the manual assembly of those numbers out of the loop.",
+    seoTitle: "ONGC Internal Portal",
     title: "INTERNAL PORTAL & REPORTING AUTOMATION",
     outcome:
       "Rebuilt how 500+ people at ONGC Videsh found documents and received their weekly numbers, and took the manual assembly of those numbers out of the loop entirely.",
@@ -213,6 +240,9 @@ export const PROJECTS: Project[] = [
   {
     num: "05",
     slug: "aurora-cafe",
+    seoDescription:
+      "A caf\u00e9 site where the menu, table booking and Instagram feed live in one place, so bookings stop arriving as DMs. Built with Next.js and Sanity CMS.",
+    seoTitle: "Aurora Café",
     title: "AURORA CAFÉ",
     outcome: "Bookings handled on-site instead of over DM.",
     category: "WEB DEVELOPMENT",
@@ -241,6 +271,9 @@ export const PROJECTS: Project[] = [
   {
     num: "06",
     slug: "lumen-studio",
+    seoDescription:
+      "A photographer's portfolio with a full-bleed gallery and flicker-free page transitions. Lighthouse 98 while carrying 60+ full-resolution images.",
+    seoTitle: "Lumen Studio",
     title: "LUMEN STUDIO",
     outcome: "Lighthouse 98 with 60+ full-res images.",
     category: "WEB DEVELOPMENT",
@@ -269,6 +302,9 @@ export const PROJECTS: Project[] = [
   {
     num: "07",
     slug: "fittrack",
+    seoDescription:
+      "A gym landing page plus a members dashboard for attendance and progress charts, so trainers stop logging attendance in a notebook. Next.js and Supabase.",
+    seoTitle: "FitTrack",
     title: "FITTRACK",
     outcome: "Trainers stopped tracking attendance in a notebook.",
     category: "WEB DEVELOPMENT",
@@ -297,6 +333,9 @@ export const PROJECTS: Project[] = [
   {
     num: "08",
     slug: "kirana-kart",
+    seoDescription:
+      "A storefront for a neighbourhood shop that turns a cart into a pre-filled WhatsApp order. No payment gateway, orders land straight on the owner's phone.",
+    seoTitle: "Kirana Kart",
     title: "KIRANA KART",
     outcome: "Zero payment-gateway setup, orders still land on a phone.",
     category: "WEB DEVELOPMENT",
@@ -323,6 +362,15 @@ export const PROJECTS: Project[] = [
     ],
   },
 ];
+
+/** "DATA ENGINEERING" -> "Data Engineering", for titles and schema. */
+export function categoryLabel(category: ProjectCategory): string {
+  return category
+    .toLowerCase()
+    .split(" ")
+    .map((w) => (w ? w[0]!.toUpperCase() + w.slice(1) : w))
+    .join(" ");
+}
 
 export function getProject(slug: string) {
   return PROJECTS.find((p) => p.slug === slug);
