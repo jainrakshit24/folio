@@ -33,3 +33,9 @@ dist-ssr
 
 # Netlify build output
 .netlify/
+
+# Compiled blog output. content/blog/*.md is the source; these are rebuilt by
+# `bun run blog`, which both `dev` and `build` call, so committing them would
+# add noise to every article's diff.
+src/blog/index.generated.ts
+src/blog/posts/

@@ -4,10 +4,12 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "dev": "vite dev",
-    "build": "bun run sitemap && vite build",
-    "build:dev": "vite build --mode development",
-    "sitemap": "bun run scripts/generate-sitemap.ts",
+    "dev": "bun run blog && vite dev",
+    "build": "bun run blog && bun run scripts/generate-rss.ts && bun run scripts/generate-sitemap.ts && vite build",
+    "blog": "bun run scripts/build-blog.ts",
+    "rss": "bun run blog && bun run scripts/generate-rss.ts",
+    "build:dev": "bun run blog && vite build --mode development",
+    "sitemap": "bun run blog && bun run scripts/generate-sitemap.ts",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write ."
@@ -92,8 +94,10 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^15.15.0",
     "lightningcss": "^1.30.0",
+    "marked": "^18.2.1",
     "nitro": "3.0.260603-beta",
     "prettier": "^3.7.3",
+    "shiki": "^4.6.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.56.1",
     "vite": "8.1.5"

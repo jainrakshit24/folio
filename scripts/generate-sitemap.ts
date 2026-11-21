@@ -9,6 +9,7 @@
 import { execFileSync } from "node:child_process";
 import { writeFileSync } from "node:fs";
 import { PROJECTS } from "../src/lib/projects";
+import { POSTS } from "../src/blog/index.generated";
 
 const SITE_URL = (process.env["VITE_SITE_URL"] || "https://jainrakshit.tech").replace(/\/+$/, "");
 
@@ -54,12 +55,33 @@ function lastModified(file: string): string | undefined {
   }
 }
 
+/** Categories that actually carry an article. An empty one is a thin page. */
+const BLOG_CATEGORIES = [...new Set(POSTS.map((p) => p.category))].map((name) =>
+  name
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-"),
+);
+
 const entries = [
   ...STATIC_PATHS.map((path) => ({ path, lastmod: lastModified(SOURCE_FOR[path] ?? "") })),
   ...PROJECTS.map((p) => ({
     path: `/work/${p.slug}`,
     lastmod: lastModified("src/lib/projects.ts"),
   })),
+  // Drafts never reach POSTS, so they cannot reach the sitemap either. An
+  // article's own dates are a truer lastmod than its file's commit date.
+  { path: "/blog", lastmod: POSTS[0]?.publishedAt },
+  ...BLOG_CATEGORIES.map((slug) => ({
+    path: `/blog/category/${slug}`,
+    lastmod: POSTS[0]?.publishedAt,
+  })),
+  ...POSTS.map((p) => ({
+    path: `/blog/${p.slug}`,
+    lastmod: p.updatedAt || p.publishedAt,
+  })),
+  { path: "/privacy", lastmod: lastModified("src/routes/privacy.tsx") },
 ];
 
 const body = entries

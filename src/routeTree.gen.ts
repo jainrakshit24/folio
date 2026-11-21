@@ -16,10 +16,14 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EducationRouteImport } from './routes/education'
 import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as PlaygroundRouteImport } from './routes/playground'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SkillsRouteImport } from './routes/skills'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as WorkIndexRouteImport } from './routes/work.index'
 import { Route as WorkSlugRouteImport } from './routes/work.$slug'
+import { Route as BlogCategorySlugRouteImport } from './routes/blog.category.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -56,6 +60,11 @@ const PlaygroundRoute = PlaygroundRouteImport.update({
   path: '/playground',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -64,6 +73,16 @@ const ServicesRoute = ServicesRouteImport.update({
 const SkillsRoute = SkillsRouteImport.update({
   id: '/skills',
   path: '/skills',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WorkIndexRoute = WorkIndexRouteImport.update({
@@ -76,6 +95,11 @@ const WorkSlugRoute = WorkSlugRouteImport.update({
   path: '/work/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogCategorySlugRoute = BlogCategorySlugRouteImport.update({
+  id: '/blog/category/$slug',
+  path: '/blog/category/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -85,10 +109,14 @@ export interface FileRoutesByFullPath {
   '/education': typeof EducationRoute
   '/experience': typeof ExperienceRoute
   '/playground': typeof PlaygroundRoute
+  '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/skills': typeof SkillsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/work/': typeof WorkIndexRoute
+  '/blog/category/$slug': typeof BlogCategorySlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -98,10 +126,14 @@ export interface FileRoutesByTo {
   '/education': typeof EducationRoute
   '/experience': typeof ExperienceRoute
   '/playground': typeof PlaygroundRoute
+  '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/skills': typeof SkillsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/blog': typeof BlogIndexRoute
   '/work': typeof WorkIndexRoute
+  '/blog/category/$slug': typeof BlogCategorySlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -112,10 +144,14 @@ export interface FileRoutesById {
   '/education': typeof EducationRoute
   '/experience': typeof ExperienceRoute
   '/playground': typeof PlaygroundRoute
+  '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/skills': typeof SkillsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/work/': typeof WorkIndexRoute
+  '/blog/category/$slug': typeof BlogCategorySlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -127,10 +163,14 @@ export interface FileRouteTypes {
     | '/education'
     | '/experience'
     | '/playground'
+    | '/privacy'
     | '/services'
     | '/skills'
+    | '/blog/$slug'
     | '/work/$slug'
+    | '/blog/'
     | '/work/'
+    | '/blog/category/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -140,10 +180,14 @@ export interface FileRouteTypes {
     | '/education'
     | '/experience'
     | '/playground'
+    | '/privacy'
     | '/services'
     | '/skills'
+    | '/blog/$slug'
     | '/work/$slug'
+    | '/blog'
     | '/work'
+    | '/blog/category/$slug'
   id:
     | '__root__'
     | '/'
@@ -153,10 +197,14 @@ export interface FileRouteTypes {
     | '/education'
     | '/experience'
     | '/playground'
+    | '/privacy'
     | '/services'
     | '/skills'
+    | '/blog/$slug'
     | '/work/$slug'
+    | '/blog/'
     | '/work/'
+    | '/blog/category/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -167,10 +215,14 @@ export interface RootRouteChildren {
   EducationRoute: typeof EducationRoute
   ExperienceRoute: typeof ExperienceRoute
   PlaygroundRoute: typeof PlaygroundRoute
+  PrivacyRoute: typeof PrivacyRoute
   ServicesRoute: typeof ServicesRoute
   SkillsRoute: typeof SkillsRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   WorkSlugRoute: typeof WorkSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   WorkIndexRoute: typeof WorkIndexRoute
+  BlogCategorySlugRoute: typeof BlogCategorySlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -224,6 +276,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlaygroundRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -236,6 +295,20 @@ declare module '@tanstack/react-router' {
       path: '/skills'
       fullPath: '/skills'
       preLoaderRoute: typeof SkillsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/work/': {
@@ -252,6 +325,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/category/$slug': {
+      id: '/blog/category/$slug'
+      path: '/blog/category/$slug'
+      fullPath: '/blog/category/$slug'
+      preLoaderRoute: typeof BlogCategorySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -263,10 +343,14 @@ const rootRouteChildren: RootRouteChildren = {
   EducationRoute: EducationRoute,
   ExperienceRoute: ExperienceRoute,
   PlaygroundRoute: PlaygroundRoute,
+  PrivacyRoute: PrivacyRoute,
   ServicesRoute: ServicesRoute,
   SkillsRoute: SkillsRoute,
+  BlogSlugRoute: BlogSlugRoute,
   WorkSlugRoute: WorkSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
   WorkIndexRoute: WorkIndexRoute,
+  BlogCategorySlugRoute: BlogCategorySlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

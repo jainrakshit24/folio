@@ -25,6 +25,18 @@ export function SiteShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   usePageViewTracking(pathname);
 
+  // The blog is a reading surface, and a reader usually arrives cold from
+  // search. It keeps the nav and the footer so the rest of the site stays
+  // reachable, and drops everything that costs time before the text appears:
+  // the ~3s preloader, the WebGL island, smooth scroll, the custom cursor.
+  // Leaving FactoryCanvas unmounted is what keeps rapier and drei out of an
+  // article - its scene is lazy, so those chunks are never requested at all.
+  const isBlog = pathname === "/blog" || pathname.startsWith("/blog/");
+
+  // One tree, with the extras switched off on the blog, rather than two trees.
+  // A `false` still occupies its slot in the children array, so Nav, Footer and
+  // Toaster keep their position and survive a blog-to-site navigation instead
+  // of remounting (which would reset nav state and refetch the visitor count).
   return (
     <>
       <a
@@ -34,16 +46,16 @@ export function SiteShell({ children }: { children: ReactNode }) {
         Skip to content
       </a>
 
-      <SmoothScroll />
-      <FactoryCanvas active={ready} />
+      {!isBlog && <SmoothScroll />}
+      {!isBlog && <FactoryCanvas active={ready} />}
       <Nav />
       <div className="relative z-10">{children}</div>
       <Footer />
-      <PageTransition />
-      <CustomCursor />
+      {!isBlog && <PageTransition />}
+      {!isBlog && <CustomCursor />}
       <Toaster position="bottom-center" />
-      <div className="grain-overlay" aria-hidden="true" />
-      <Preloader onDone={() => setReady(true)} />
+      {!isBlog && <div className="grain-overlay" aria-hidden="true" />}
+      {!isBlog && <Preloader onDone={() => setReady(true)} />}
     </>
   );
 }

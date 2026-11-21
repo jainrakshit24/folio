@@ -1,0 +1,230 @@
+/**
+ * Rakshit Jain · Portfolio
+ * Copyright (c) 2026 Rakshit Jain.
+ *
+ * Reading styles for compiled article HTML. Imported by the blog routes only,
+ * so Vite keeps it in the blog chunks and the rest of the site never pays for
+ * it. Plain CSS because the article body is generated markup, not components,
+ * so there is nowhere to hang utility classes.
+ *
+ * Every colour and face here is a theme token. The blog borrows Medium's
+ * reading qualities - a narrow measure, generous leading, calm body copy - but
+ * wears this site's paper, ink and display type.
+ */
+
+.blog-prose {
+  font-size: 1.0625rem;
+  line-height: 1.78;
+  color: var(--ink);
+  max-width: 64ch;
+}
+
+.blog-prose > * + * {
+  margin-top: 1.25em;
+}
+
+.blog-prose h2,
+.blog-prose h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  scroll-margin-top: 7rem;
+}
+
+.blog-prose h2 {
+  margin-top: 2.1em;
+  margin-bottom: 0.5em;
+  font-size: 1.6rem;
+  line-height: 1.12;
+}
+
+/* A short ink rule above each section, echoing the site's hard edges. */
+.blog-prose h2::before {
+  content: "";
+  display: block;
+  width: 2.25rem;
+  margin-bottom: 0.7rem;
+  border-top: 3px solid var(--coral);
+}
+
+.blog-prose h3 {
+  margin-top: 1.7em;
+  margin-bottom: 0.4em;
+  font-size: 1.22rem;
+  line-height: 1.25;
+}
+
+.blog-prose p {
+  margin-top: 1.15em;
+}
+
+.blog-prose a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--coral);
+}
+
+.blog-prose a:hover {
+  background: var(--sunny);
+}
+
+.blog-prose strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.blog-prose ul,
+.blog-prose ol {
+  margin-top: 1.15em;
+  padding-left: 1.4em;
+}
+
+.blog-prose ul {
+  list-style: disc;
+}
+
+.blog-prose ol {
+  list-style: decimal;
+}
+
+.blog-prose li {
+  margin-top: 0.45em;
+}
+
+.blog-prose li::marker {
+  color: var(--coral);
+  font-weight: 700;
+}
+
+.blog-prose blockquote {
+  margin-top: 1.5em;
+  border-left: 4px solid var(--sunny);
+  background: color-mix(in oklab, var(--sunny) 14%, transparent);
+  padding: 0.85em 1.1em;
+  font-style: italic;
+  color: color-mix(in oklab, var(--ink) 82%, transparent);
+}
+
+.blog-prose hr {
+  margin-top: 2.5em;
+  margin-bottom: 2em;
+  border: 0;
+  border-top: 2px solid var(--ink-line);
+}
+
+/* Inline code, not the highlighted blocks. */
+.blog-prose p > code,
+.blog-prose li > code,
+.blog-prose td > code,
+.blog-prose h2 > code,
+.blog-prose h3 > code {
+  background: var(--sand);
+  border: 2px solid var(--ink-line);
+  border-radius: 6px;
+  padding: 0.05em 0.35em;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+
+/* ---------- code blocks ---------- */
+
+.blog-prose .code-block {
+  position: relative;
+  margin-top: 1.6em;
+  /* Room for the header strip, so the copy button never covers line one. */
+  padding-top: 2.1rem;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  background: var(--paper);
+  box-shadow: 4px 4px 0 var(--ink);
+  overflow: hidden;
+}
+
+/* The strip itself, labelled with the fence's language. */
+.blog-prose .code-block::before {
+  content: attr(data-lang);
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2.1rem;
+  display: flex;
+  align-items: center;
+  padding-left: 0.9rem;
+  border-bottom: 2px solid var(--ink);
+  background: var(--sand);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--ink) 65%, transparent);
+}
+
+.blog-prose .code-block pre {
+  margin: 0;
+  padding: 0.9rem 1.15rem 1rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.65;
+}
+
+.blog-prose .code-block code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+  font-family: var(--font-mono);
+}
+
+/* ---------- tables ---------- */
+
+.blog-prose table {
+  display: block;
+  width: 100%;
+  margin-top: 1.6em;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+}
+
+.blog-prose th,
+.blog-prose td {
+  border: 2px solid var(--ink-line);
+  padding: 0.55em 0.8em;
+  text-align: left;
+  vertical-align: top;
+}
+
+.blog-prose th {
+  background: var(--sand);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ---------- media ---------- */
+
+.blog-prose img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-top: 1.75em;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+}
+
+@media (max-width: 640px) {
+  .blog-prose {
+    font-size: 1rem;
+  }
+  .blog-prose h2 {
+    font-size: 1.4rem;
+  }
+  .blog-prose .code-block {
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+}

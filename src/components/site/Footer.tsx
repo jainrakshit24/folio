@@ -75,9 +75,16 @@ export function Footer() {
         </Link>
 
         <div className="flex flex-wrap items-center justify-between gap-5">
-          <p className="num flex items-center gap-2 text-[11px] uppercase tracking-[0.2em]">
+          <p className="num flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.2em]">
             <Star aria-hidden="true" className="h-4 w-4 text-sunny" />
             Built with too much coffee ☕ · Delhi NCR
+            <span aria-hidden="true" className="text-ink/30">
+              ·
+            </span>
+            {/* AdSense requires a reachable privacy policy, not just one in the sitemap. */}
+            <Link to="/privacy" className="underline-offset-4 hover:text-coral hover:underline">
+              Privacy
+            </Link>
           </p>
           <VisitorCount />
         </div>

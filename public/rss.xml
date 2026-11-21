@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Rakshit Jain · Blog</title>
+    <link>https://jainrakshit.tech/blog</link>
+    <description>Notes on data engineering, AI agents, data quality and the web.</description>
+    <language>en</language>
+    <managingEditor>itsrakshitjain@gmail.com (Rakshit Jain)</managingEditor>
+    <lastBuildDate>Sat, 21 Nov 2026 12:00:00 GMT</lastBuildDate>
+    <atom:link href="https://jainrakshit.tech/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Agent Skills and MCP Solve Different Problems</title>
+      <link>https://jainrakshit.tech/blog/agent-skills-and-mcp</link>
+      <guid isPermaLink="true">https://jainrakshit.tech/blog/agent-skills-and-mcp</guid>
+      <description>MCP gives an agent hands. Skills give it judgement. Teams keep reaching for one when they needed the other, and the symptom looks the same either way.</description>
+      <category>Artificial Intelligence</category>
+      <dc:creator>Rakshit Jain</dc:creator>
+      <pubDate>Sat, 21 Nov 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>This Blog Ships Zero Markdown Parser to Your Browser</title>
+      <link>https://jainrakshit.tech/blog/blog-with-no-markdown-parser</link>
+      <guid isPermaLink="true">https://jainrakshit.tech/blog/blog-with-no-markdown-parser</guid>
+      <description>Most markdown blogs make the reader's phone do work the build server already did. Moving parsing and syntax highlighting to build time costs nothing and removes both.</description>
+      <category>Web Development</category>
+      <dc:creator>Rakshit Jain</dc:creator>
+      <pubDate>Sat, 21 Nov 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Your AI Project Will Fail on Data Quality, Not on the Model</title>
+      <link>https://jainrakshit.tech/blog/data-quality-before-the-model</link>
+      <guid isPermaLink="true">https://jainrakshit.tech/blog/data-quality-before-the-model</guid>
+      <description>Leading zeros destroyed by a cast. Four date formats in one column. The word null stored as text. The model is rarely the thing that went wrong.</description>
+      <category>Data Engineering</category>
+      <dc:creator>Rakshit Jain</dc:creator>
+      <pubDate>Sat, 21 Nov 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>GTA 6 Sold $2.3 Billion in a Day. Read the Number Carefully</title>
+      <link>https://jainrakshit.tech/blog/gta-6-launch-numbers</link>
+      <guid isPermaLink="true">https://jainrakshit.tech/blog/gta-6-launch-numbers</guid>
+      <description>Every outlet printed a different GTA 6 sales figure within 24 hours of launch. None of them came from Rockstar. Here's how to tell an estimate from a fact.</description>
+      <category>Data Science</category>
+      <dc:creator>Rakshit Jain</dc:creator>
+      <pubDate>Sat, 21 Nov 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>The Lakehouse Won, and the Survey Numbers Say It Is Only Half Done</title>
+      <link>https://jainrakshit.tech/blog/lakehouse-is-the-default-now</link>
+      <guid isPermaLink="true">https://jainrakshit.tech/blog/lakehouse-is-the-default-now</guid>
+      <description>Iceberg is the centre of gravity and DuckDB keeps turning up as the engine. But 44% of teams are still on a cloud warehouse, and that gap is the real story of 2026.</description>
+      <category>Data Engineering</category>
+      <dc:creator>Rakshit Jain</dc:creator>
+      <pubDate>Sat, 21 Nov 2026 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

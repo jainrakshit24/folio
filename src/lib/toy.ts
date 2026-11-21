@@ -38,7 +38,24 @@ export const ROUTES = [
   { to: "/education", label: "Education", doodle: "✧" },
   { to: "/playground", label: "Playground", doodle: "●" },
   { to: "/contact", label: "Contact", doodle: "♥" },
-] as { to: "/" | "/about" | "/work" | "/services" | "/skills" | "/experience" | "/education" | "/playground" | "/contact"; label: string; full?: string; doodle: string; isNew?: boolean }[];
+  { to: "/blog", label: "Blog", doodle: "✎" },
+] as {
+  to:
+    | "/"
+    | "/about"
+    | "/work"
+    | "/blog"
+    | "/services"
+    | "/skills"
+    | "/experience"
+    | "/education"
+    | "/playground"
+    | "/contact";
+  label: string;
+  full?: string;
+  doodle: string;
+  isNew?: boolean;
+}[];
 
 export function prefersReducedMotion() {
   if (typeof window === "undefined") return false;
@@ -72,8 +89,10 @@ export function isSoundEnabled() {
 export function pop(freq = 520) {
   if (!soundOn || typeof window === "undefined") return;
   try {
-    audioCtx ??= new (window.AudioContext ||
-      (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
+    audioCtx ??= new (
+      window.AudioContext ||
+      (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
+    )();
     const ctx = audioCtx;
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();

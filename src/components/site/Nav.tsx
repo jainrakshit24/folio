@@ -54,7 +54,7 @@ export function Nav() {
   return (
     <>
       <motion.header
-        className="fixed left-1/2 top-4 z-[75] w-[min(1080px,calc(100vw-1.5rem))] -translate-x-1/2"
+        className="fixed left-1/2 top-4 z-[75] w-[min(1180px,calc(100vw-1.5rem))] -translate-x-1/2"
         animate={{ y: hidden ? -110 : 0, scale: hidden ? 0.96 : 1 }}
         transition={spring}
       >
@@ -68,7 +68,7 @@ export function Nav() {
               setClicks((c) => c + 1);
               pop(440);
             }}
-            className="rounded-full px-3 py-1 font-display text-lg font-extrabold tracking-tight"
+            className="whitespace-nowrap rounded-full px-2 py-1 font-display text-lg font-extrabold tracking-tight"
             data-cursor="TILT ME"
             aria-label="Rakshit Jain wordmark"
           >
@@ -84,12 +84,23 @@ export function Nav() {
                     to={r.to}
                     onClick={() => pop()}
                     className={cn(
-                      "num rounded-full border-2 border-transparent px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] transition-colors",
+                      "num whitespace-nowrap rounded-full border-2 border-transparent px-2.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] transition-colors",
                       active ? "border-ink bg-coral text-cream" : "hover:border-ink hover:bg-sunny",
                     )}
                   >
-                    {r.full ? <span title={r.full} aria-label={r.full}>{r.label}</span> : r.label}
-                    {r.isNew && <span aria-label="new" className="ml-1 inline-block h-1.5 w-1.5 -translate-y-1.5 rounded-full bg-coral ring-1 ring-ink" />}
+                    {r.full ? (
+                      <span title={r.full} aria-label={r.full}>
+                        {r.label}
+                      </span>
+                    ) : (
+                      r.label
+                    )}
+                    {r.isNew && (
+                      <span
+                        aria-label="new"
+                        className="ml-1 inline-block h-1.5 w-1.5 -translate-y-1.5 rounded-full bg-coral ring-1 ring-ink"
+                      />
+                    )}
                   </Link>
                 </li>
               );
@@ -148,7 +159,12 @@ export function Nav() {
                       {r.doodle}
                     </span>
                     <span>{r.full ?? r.label}</span>
-                    {r.isNew && <span aria-label="new" className="h-3 w-3 rounded-full border-2 border-ink bg-coral" />}
+                    {r.isNew && (
+                      <span
+                        aria-label="new"
+                        className="h-3 w-3 rounded-full border-2 border-ink bg-coral"
+                      />
+                    )}
                   </Link>
                 </motion.li>
               ))}

@@ -132,6 +132,88 @@ export const PROJECTS: Project[] = [
   },
   {
     num: "02",
+    slug: "nexus",
+    seoDescription:
+      "Local-first engineering memory for coding agents: confidence-graded project facts, blast-radius analysis before an edit, and a gate that runs the checks itself.",
+    seoTitle: "NEXUS",
+    title: "NEXUS",
+    outcome:
+      "Local-first memory for coding agents. It remembers the project, maps what an edit is about to break, and will not record a test pass it did not watch happen.",
+    category: "AUTOMATION",
+    tags: ["Python", "SQLite", "MCP", "CLI", "SQL", "Pytest"],
+    links: [
+      { label: "github.com/jainrakshit24/nexus", href: "https://github.com/jainrakshit24/nexus" },
+      { label: "Documentation", href: "https://jainrakshit24.github.io/nexus/" },
+    ],
+    featured: true,
+    role: "Solo: product, build, tests, docs, release",
+    year: "Nov 2026 \u2192 ongoing",
+    status: "Open source, MIT",
+    tone: "grape",
+    context: [
+      "Every coding session starts from zero. The agent re-reads the same files, re-derives the same constraints, and re-opens a decision the team settled six months ago, because nothing carried from one session to the next.",
+      "Two smaller failures sit underneath that one. The agent edits a file without knowing which four modules import it. And it reports that the tests pass without having run them.",
+      "I wanted all three fixed without sending anything to a model provider. A codebase is the asset; shipping it off the machine to buy a memory feature is a bad trade, and for a lot of teams it is not a trade they are allowed to make.",
+    ],
+    approach: [
+      "Project facts are stored as Markdown with a confidence grade and a source reference, so any claim can be traced back to the line that justifies it. Retrieval runs two ways: keyword search, and traversal of a parsed code graph held in SQLite.",
+      "Before an edit, a plan call returns the blast radius: dependents found through parsed imports, plain-text references, the tests that cover the file, and optionally a language server for the cases a parser misses.",
+      "After an edit, the verify gate runs the diff, a secret scan, the linter, the type checker, a vulnerability check, an API-break check and the test suite. It records only what it observed, because there is no code path that writes a pass it did not watch.",
+      "The whole product is one loop \u2014 recall, plan, edit, verify, remember. It ships three ways from the same core: an MCP server exposing five tools, a CLI, and an agent skill that installs into Claude Code, Cursor, Codex and around sixty other agent directories.",
+      "Nothing leaves the machine and no model is ever called, so the cost of running it does not scale with the size of the repository.",
+    ],
+    results: [
+      { value: 302, label: "automated tests" },
+      { value: 5, label: "MCP tools exposed" },
+      { value: 0, label: "model calls, ever" },
+    ],
+  },
+  {
+    num: "03",
+    slug: "data-intelligence-engine",
+    seoDescription:
+      "An agent skill that profiles, cleans and quality-checks messy datasets with real Python scripts, grades every claim by its evidence, and sends no rows to the model.",
+    seoTitle: "Data Intelligence Engine",
+    title: "DATA INTELLIGENCE ENGINE",
+    outcome:
+      "Hand an agent a messy dataset and it profiles, cleans and grades it with real scripts. Every claim carries its evidence, and not one row reaches the model.",
+    category: "DATA ENGINEERING",
+    tags: ["Python", "DuckDB", "SQLGlot", "SQL", "dbt", "Airflow"],
+    links: [
+      {
+        label: "github.com/jainrakshit24/data-intelligence-engine",
+        href: "https://github.com/jainrakshit24/data-intelligence-engine",
+      },
+      {
+        label: "Documentation",
+        href: "https://jainrakshit24.github.io/data-intelligence-engine/",
+      },
+    ],
+    featured: true,
+    role: "Solo: product, build, docs, release",
+    year: "Nov 2026 \u2192 ongoing",
+    status: "Open source, MIT",
+    tone: "coral",
+    context: [
+      "Pointing an agent at a dataset usually means pasting rows into its context. That sends the data to the model provider, costs tokens in proportion to the file, and still leaves the model with no way to actually compute anything \u2014 it is reading a sample and inferring the rest.",
+      "The second problem is that an agent answers either way. Ask whether a file is clean and you get a confident paragraph back, whether or not a single check ran behind it.",
+      "Most of the work I do day to day starts here: someone has an export, something about it looks wrong, and the first hour goes on finding out whether it is wrong or just unfamiliar.",
+    ],
+    approach: [
+      "The skill file is a thin router over 27 intents. A request loads only the methodology that intent names, out of more than fifty modules, so a question pays for the reasoning it uses and nothing else. One request can route to several intents at once, because a pipeline that lost 30% of its rows is a quality check, an anomaly scan and a pipeline debug at the same time.",
+      "Every number comes from a script rather than the model. They profile files, score data health, detect volume and null-rate anomalies, reconcile two versions of a dataset row by row, and statically review pipelines, dbt projects, Airflow DAGs and SQL without running or importing them.",
+      "The model only ever sees aggregates. Rows stay on the machine, which also means the skill is usable on data nobody is permitted to paste anywhere.",
+      "A check that could not run is reported as unverified and is never promoted to a finding \u2014 \u201cI could not reach the database\u201d is treated as an answer. A health score computed without business rules is labelled provisional, and the label does not quietly disappear later.",
+      "Every report closes with its coverage: how many rows of how many were actually read, which files, and under what filters, so a clean result cannot be mistaken for a complete one.",
+    ],
+    results: [
+      { value: 27, label: "intents the router handles" },
+      { value: 11, label: "scripts doing the computing" },
+      { value: 0, label: "rows sent to the model" },
+    ],
+  },
+  {
+    num: "04",
     slug: "campaign-data-integrity",
     seoDescription:
       "Reconciled client, campaign and delivery-unit data across three master sources on an ad platform, and proved where the docs and the live system disagreed.",
@@ -168,7 +250,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    num: "03",
+    num: "05",
     slug: "college-predictor-data",
     seoDescription:
       "Validated the ranks, counts and field mappings behind a student-facing prediction tool by recomputing every aggregate from source instead of trusting it.",
@@ -203,7 +285,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    num: "04",
+    num: "06",
     slug: "ongc-intranet",
     seoDescription:
       "Rebuilt how 500+ people at ONGC Videsh found documents and got their weekly numbers, and took the manual assembly of those numbers out of the loop.",
@@ -238,7 +320,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    num: "05",
+    num: "07",
     slug: "aurora-cafe",
     seoDescription:
       "A caf\u00e9 site where the menu, table booking and Instagram feed live in one place, so bookings stop arriving as DMs. Built with Next.js and Sanity CMS.",
@@ -269,7 +351,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    num: "06",
+    num: "08",
     slug: "lumen-studio",
     seoDescription:
       "A photographer's portfolio with a full-bleed gallery and flicker-free page transitions. Lighthouse 98 while carrying 60+ full-resolution images.",
@@ -300,7 +382,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    num: "07",
+    num: "09",
     slug: "fittrack",
     seoDescription:
       "A gym landing page plus a members dashboard for attendance and progress charts, so trainers stop logging attendance in a notebook. Next.js and Supabase.",
@@ -331,7 +413,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    num: "08",
+    num: "10",
     slug: "kirana-kart",
     seoDescription:
       "A storefront for a neighbourhood shop that turns a cart into a pre-filled WhatsApp order. No payment gateway, orders land straight on the owner's phone.",

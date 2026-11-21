@@ -6,7 +6,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
-  Link,
   createRootRouteWithContext,
   useRouter,
   HeadContent,
@@ -18,29 +17,8 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportError } from "../lib/report-error";
 import { SiteShell } from "@/components/site/SiteShell";
+import { NotFound } from "@/components/site/NotFound";
 import { GOATCOUNTER_CODE, GOATCOUNTER_ORIGIN } from "@/lib/analytics";
-
-function NotFoundComponent() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
@@ -85,10 +63,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      // AdSense site verification. Google wants this on every page; it is only
+      // an identifier, so it loads nothing and costs no request. The ad script
+      // itself stays behind VITE_ADSENSE_CLIENT until the account is approved,
+      // which keeps performance untouched in the meantime.
+      { name: "google-adsense-account", content: "ca-pub-2057430562313391" },
       { title: "Rakshit Jain | Data Engineer & Freelance Web Developer" },
       {
         name: "description",
-        content: "Rakshit Jain is a Data Engineer and freelance web developer in Delhi NCR. ETL work, dashboards, and fast animated websites for businesses and creators.",
+        content:
+          "Rakshit Jain is a Data Engineer and freelance web developer in Delhi NCR. ETL work, dashboards, and fast animated websites for businesses and creators.",
       },
       { name: "author", content: "Rakshit Jain" },
       { property: "og:type", content: "website" },
@@ -122,7 +106,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   }),
   shellComponent: RootShell,
   component: RootComponent,
-  notFoundComponent: NotFoundComponent,
+  notFoundComponent: NotFound,
   errorComponent: ErrorComponent,
 });
 
@@ -150,9 +134,20 @@ function RootShell({ children }: { children: ReactNode }) {
             {/* h2, not h1: crawlers that skip JS would otherwise see this
                 heading and the page's real <h1> as two competing h1s. */}
             <h2>Rakshit Jain, Data Engineer &amp; Freelance Web Developer</h2>
-            <p>{"Rakshit Jain is a Data Engineer and freelance web developer in Delhi NCR. ETL work, dashboards, and fast animated websites for businesses and creators."}</p>
-            <p>Two things I do: data engineering &amp; analytics (Python, SQL, ETL, Power BI), and freelance web development (fast, responsive, animated websites and landing pages).</p>
-            <p>Email: <a href="mailto:itsrakshitjain@gmail.com">itsrakshitjain@gmail.com</a> · Phone: +91 72067 53199 · <a href="https://linkedin.com/in/jainrakshit24">LinkedIn</a> · <a href="https://github.com/jainrakshit24">GitHub</a></p>
+            <p>
+              {
+                "Rakshit Jain is a Data Engineer and freelance web developer in Delhi NCR. ETL work, dashboards, and fast animated websites for businesses and creators."
+              }
+            </p>
+            <p>
+              Two things I do: data engineering &amp; analytics (Python, SQL, ETL, Power BI), and
+              freelance web development (fast, responsive, animated websites and landing pages).
+            </p>
+            <p>
+              Email: <a href="mailto:itsrakshitjain@gmail.com">itsrakshitjain@gmail.com</a> · Phone:
+              +91 72067 53199 · <a href="https://linkedin.com/in/jainrakshit24">LinkedIn</a> ·{" "}
+              <a href="https://github.com/jainrakshit24">GitHub</a>
+            </p>
           </div>
         </noscript>
         {children}
