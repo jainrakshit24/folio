@@ -243,7 +243,9 @@ function Article() {
           <div className="blog-prose" dangerouslySetInnerHTML={{ __html: html }} />
         </div>
 
-        <AdSlot height={280} />
+        {/* "Blog" responsive unit. height has to stay close to what it really
+            renders, or the ad landing shifts the footer and costs CLS. */}
+        <AdSlot slot="9053081598" height={280} />
 
         <footer className="mt-12 border-t-2 border-ink pt-6">
           <div className="flex flex-wrap items-center gap-3 text-[13px]">
