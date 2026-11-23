@@ -185,7 +185,7 @@ function Article() {
 
   return (
     <main id="main" className="relative min-h-screen bg-cream pb-24 pt-32">
-      <div className="mx-auto w-full max-w-[44rem] px-5 sm:px-8">
+      <div className="mx-auto w-full max-w-[52rem] px-5 sm:px-8">
         <nav
           aria-label="Breadcrumb"
           className="num mb-6 text-[11px] uppercase tracking-[0.16em] text-ink/55"
@@ -239,7 +239,7 @@ function Article() {
 
         <Toc toc={toc} />
 
-        <div className="toy-card px-5 py-8 sm:px-9 sm:py-10">
+        <div className="toy-card px-5 py-9 sm:px-10 sm:py-14">
           <div className="blog-prose" dangerouslySetInnerHTML={{ __html: html }} />
         </div>
 

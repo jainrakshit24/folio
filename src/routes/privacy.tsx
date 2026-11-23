@@ -29,7 +29,7 @@ export const Route = createFileRoute("/privacy")({
 function Privacy() {
   return (
     <main id="main" className="relative min-h-screen bg-cream pb-24 pt-32">
-      <div className="mx-auto w-full max-w-[44rem] px-5 sm:px-8">
+      <div className="mx-auto w-full max-w-[52rem] px-5 sm:px-8">
         <span className="label-pill bg-paper">LEGAL</span>
         <h1 className="mt-5 font-display text-[2.5rem] font-extrabold uppercase leading-[0.95] tracking-[-0.03em] sm:text-[3.25rem]">
           Privacy Policy
@@ -37,7 +37,7 @@ function Privacy() {
         <p className="num mt-4 text-[11px] uppercase tracking-[0.18em] text-ink/55">
           Last updated 21 November 2026
         </p>
-        <div className="toy-card mt-8 px-5 py-8 sm:px-9 sm:py-10">
+        <div className="toy-card mt-8 px-5 py-9 sm:px-10 sm:py-14">
           <div className="blog-prose">
             <h2>The short version</h2>
             <p>
