@@ -6,8 +6,44 @@
     <description>Notes on data engineering, AI agents, data quality and the web.</description>
     <language>en</language>
     <managingEditor>itsrakshitjain@gmail.com (Rakshit Jain)</managingEditor>
-    <lastBuildDate>Sat, 21 Nov 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 12:00:00 GMT</lastBuildDate>
     <atom:link href="https://jainrakshit.tech/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Your Agent Wrote the Test That Says Its Code Works</title>
+      <link>https://jainrakshit.tech/blog/agent-tests-that-prove-nothing</link>
+      <guid isPermaLink="true">https://jainrakshit.tech/blog/agent-tests-that-prove-nothing</guid>
+      <description>A manual audit of 1,000 AI-written unit tests found 9.6% did real work. Here's why a green suite is weak evidence when the agent wrote both sides.</description>
+      <category>Software Development</category>
+      <dc:creator>Rakshit Jain</dc:creator>
+      <pubDate>Mon, 23 Nov 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Entry-Level Data Engineering Is Not Gone. It Moved.</title>
+      <link>https://jainrakshit.tech/blog/entry-level-data-engineering-2026</link>
+      <guid isPermaLink="true">https://jainrakshit.tech/blog/entry-level-data-engineering-2026</guid>
+      <description>Junior postings are down and time-to-first-job has doubled. I went from QA intern to engineer in four months in 2026. Here's what the gap looks like up close.</description>
+      <category>Data Engineering</category>
+      <dc:creator>Rakshit Jain</dc:creator>
+      <pubDate>Mon, 23 Nov 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>How to Prove Two Systems Hold the Same Data</title>
+      <link>https://jainrakshit.tech/blog/prove-two-systems-hold-same-data</link>
+      <guid isPermaLink="true">https://jainrakshit.tech/blog/prove-two-systems-hold-same-data</guid>
+      <description>Row counts match and the data is still wrong. The reconciliation ladder I use on every release: counts, aggregates, hashes, then the keys that differ.</description>
+      <category>Data Engineering</category>
+      <dc:creator>Rakshit Jain</dc:creator>
+      <pubDate>Mon, 23 Nov 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Will AI Replace Data Engineers? Read the Numbers First</title>
+      <link>https://jainrakshit.tech/blog/will-ai-replace-data-engineers</link>
+      <guid isPermaLink="true">https://jainrakshit.tech/blog/will-ai-replace-data-engineers</guid>
+      <description>Job postings up 80%, tech layoffs at a three-year high, and a 56% AI wage premium. The same year produced all three. Here's how to read them together.</description>
+      <category>Data Engineering</category>
+      <dc:creator>Rakshit Jain</dc:creator>
+      <pubDate>Mon, 23 Nov 2026 12:00:00 GMT</pubDate>
+    </item>
     <item>
       <title>Agent Skills and MCP Solve Different Problems</title>
       <link>https://jainrakshit.tech/blog/agent-skills-and-mcp</link>
