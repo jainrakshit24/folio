@@ -66,6 +66,16 @@ export function AuthorCard() {
           >
             Freelance work
           </Link>
+          {/* The footer already jokes about coffee; this is the same joke, paid. */}
+          <a
+            href="https://buymeacoffee.com/jainrakshit"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ink-border hard-sm inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-paper px-6 py-2.5 font-display text-[13px] font-bold uppercase tracking-[0.1em] text-ink transition-transform hover:-translate-y-0.5 hover:bg-sunny"
+          >
+            Buy me a coffee
+            <span aria-hidden="true">☕</span>
+          </a>
         </div>
 
         <Link
