@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { seo, SITE_URL, absoluteUrl } from "@/lib/seo";
 import { AdSlot, adsenseScripts } from "@/components/blog/AdSlot";
+import { AuthorCard } from "@/components/blog/AuthorCard";
 import {
   formatDate,
   categorySlug,
@@ -246,6 +247,8 @@ function Article() {
         {/* "Blog" responsive unit. height has to stay close to what it really
             renders, or the ad landing shifts the footer and costs CLS. */}
         <AdSlot slot="9053081598" height={280} />
+
+        <AuthorCard />
 
         <footer className="mt-12 border-t-2 border-ink pt-6">
           <div className="flex flex-wrap items-center gap-3 text-[13px]">
