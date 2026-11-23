@@ -106,7 +106,7 @@ function CategoryPage() {
 
   return (
     <main id="main" className="relative min-h-screen bg-cream pb-24 pt-32">
-      <div className="mx-auto w-full max-w-3xl px-5 sm:px-8">
+      <div className="mx-auto w-full max-w-5xl px-5 sm:px-8">
         <nav
           aria-label="Breadcrumb"
           className="num mb-6 text-[11px] uppercase tracking-[0.16em] text-ink/55"
@@ -142,7 +142,7 @@ function CategoryPage() {
           ))}
         </nav>
 
-        <div className="space-y-5 pt-2">
+        <div className="grid gap-5 pt-2 sm:grid-cols-2">
           {posts.map((p) => (
             <ArticleCard key={p.slug} post={p} />
           ))}

@@ -93,7 +93,7 @@ function BlogIndex() {
 
   return (
     <main id="main" className="relative min-h-screen bg-cream pb-24 pt-32">
-      <div className="mx-auto w-full max-w-3xl px-5 sm:px-8">
+      <div className="mx-auto w-full max-w-5xl px-5 sm:px-8">
         <header>
           <span className="label-pill bg-paper">( 10 ) BLOG</span>
           <h1 className="mt-5 font-display text-[2.75rem] font-extrabold leading-[0.95] tracking-[-0.035em] sm:text-[4rem]">
@@ -163,7 +163,7 @@ function BlogIndex() {
               Nothing matches “{query}”. Try a category name or a tag.
             </p>
           ) : (
-            <div className="space-y-5">
+            <div className="grid gap-5 sm:grid-cols-2">
               {visible.map((p) => (
                 <ArticleCard key={p.slug} post={p} />
               ))}
