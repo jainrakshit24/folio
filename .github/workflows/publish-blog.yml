@@ -1,0 +1,38 @@
+# Asks Netlify to rebuild the site every morning, so any article whose
+# publishedAt has come due goes live without a push.
+#
+# scripts/build-blog.ts decides what is due; this file only decides when to
+# ask. A morning with nothing queued rebuilds the same site harmlessly.
+#
+# Requires one repository secret: NETLIFY_BUILD_HOOK, the URL from
+# Netlify > Site configuration > Build & deploy > Build hooks.
+name: Publish scheduled articles
+
+on:
+  schedule:
+    # 04:00 UTC is 09:30 IST. GitHub runs cron on a best-effort basis and can
+    # be 10-15 minutes late when the queue is busy, which does not matter here.
+    - cron: "0 4 * * *"
+  # So a queued article can be released early from the Actions tab.
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  trigger-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Netlify build
+        env:
+          HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "NETLIFY_BUILD_HOOK is not set. Add it under" \
+                 "Settings > Secrets and variables > Actions." >&2
+            exit 1
+          fi
+          # --fail turns an HTTP error into a failed job, so a broken or
+          # revoked hook shows up as a red run instead of a silent no-op.
+          curl --fail --silent --show-error --max-time 30 \
+            -X POST -d '{}' "$HOOK"
+          echo "Build requested."

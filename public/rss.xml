@@ -89,5 +89,14 @@
       <dc:creator>Rakshit Jain</dc:creator>
       <pubDate>Sat, 21 Nov 2026 12:00:00 GMT</pubDate>
     </item>
+    <item>
+      <title>I Built an Entire Blog to Avoid Posting on LinkedIn</title>
+      <link>https://jainrakshit.tech/blog/why-i-started-this-blog</link>
+      <guid isPermaLink="true">https://jainrakshit.tech/blog/why-i-started-this-blog</guid>
+      <description>The obligatory first post. Who I am, what I do for money, and why there is now a blog attached to a portfolio site that was doing perfectly fine without one.</description>
+      <category>Software Development</category>
+      <dc:creator>Rakshit Jain</dc:creator>
+      <pubDate>Wed, 18 Nov 2026 12:00:00 GMT</pubDate>
+    </item>
   </channel>
 </rss>
