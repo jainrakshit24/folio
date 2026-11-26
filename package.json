@@ -5,14 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "bun run blog && vite dev",
-    "build": "bun run blog && bun run scripts/generate-rss.ts && bun run scripts/generate-sitemap.ts && vite build",
+    "build": "bun run blog && bun run scripts/generate-rss.ts && bun run scripts/generate-sitemap.ts && bun run scripts/generate-llms.ts && vite build",
     "blog": "bun run scripts/build-blog.ts",
     "rss": "bun run blog && bun run scripts/generate-rss.ts",
     "build:dev": "bun run blog && vite build --mode development",
     "sitemap": "bun run blog && bun run scripts/generate-sitemap.ts",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "llms": "bun run blog && bun run scripts/generate-llms.ts"
   },
   "overrides": {
     "rolldown": "1.2.1"
